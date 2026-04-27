@@ -1,399 +1,367 @@
 import React, { useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { Link as ScrollLink } from 'react-scroll';
-import { 
-  Building2, TrendingUp, Key, Star, ShieldCheck, 
-  MapPin, Phone, ArrowRight, CheckCircle2, ChevronDown, 
-  Gem, Feather, Mail, Menu, X
-} from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { CheckCircle2 } from 'lucide-react';
 import './index.css';
 
-// --- Global Framer Motion Variants ---
-const fadeUp = {
+// Animation Variables
+const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.25, 1, 0.5, 1] } }
-};
-
-const fadeRight = {
-  hidden: { opacity: 0, x: -30 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.25, 1, 0.5, 1] } }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
 };
 
 const staggerContainer = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
 };
-
-// --- Components ---
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
-      if (mobileMenuOpen) setMobileMenuOpen(false); // close on scroll
     }
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [mobileMenuOpen]);
+  }, []);
 
   return (
-    <motion.nav 
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 1, ease: "easeOut" }}
-      className={`navbar ${scrolled ? 'scrolled' : ''} ${mobileMenuOpen ? 'menu-open' : ''}`}
-    >
-      <ScrollLink to="hero" smooth={true} duration={1000} className="nav-brand" style={{ cursor: 'pointer' }} onClick={() => setMobileMenuOpen(false)}>
-        <Feather className="nav-brand-icon" size={32} strokeWidth={1.5} />
-        <span className="nav-brand-text">STHAPANA</span>
-      </ScrollLink>
-      
+    <nav className="navbar" style={{ background: scrolled ? 'rgba(255, 255, 255, 0.98)' : 'rgba(255, 255, 255, 0.95)' }}>
+      <div className="nav-brand">
+        Sthapana
+      </div>
       <div className="nav-links">
-        <ScrollLink to="about" smooth={true} duration={800} offset={-80} className="nav-link" style={{cursor: 'pointer'}}>About Us</ScrollLink>
-        <ScrollLink to="projects" smooth={true} duration={800} offset={-80} className="nav-link" style={{cursor: 'pointer'}}>Opportunities</ScrollLink>
-        <ScrollLink to="contact" smooth={true} duration={800} className="nav-link btn-primary" style={{ padding: '0.6rem 1.5rem', cursor: 'pointer' }}>
-          Consultation
-        </ScrollLink>
+        <a href="#overview">Overview</a>
+        <a href="#amenities">Amenities</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#floor-plan">Floor Plan</a>
+        <a href="#location">Location Advantage</a>
+        <a href="#contact">Contact Us</a>
       </div>
-
-      <div className="mobile-toggle" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-        {mobileMenuOpen ? <X size={32} color="#fff" /> : <Menu size={32} color="#fff" />}
-      </div>
-
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div 
-            className="mobile-menu"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-          >
-            <ScrollLink to="about" smooth={true} duration={800} offset={-80} className="nav-link" onClick={() => setMobileMenuOpen(false)}>About Us</ScrollLink>
-            <ScrollLink to="projects" smooth={true} duration={800} offset={-80} className="nav-link" onClick={() => setMobileMenuOpen(false)}>Opportunities</ScrollLink>
-            <ScrollLink to="contact" smooth={true} duration={800} className="nav-link btn-primary" onClick={() => setMobileMenuOpen(false)} style={{ padding: '0.8rem 2rem', marginTop: '1rem' }}>
-              Consultation
-            </ScrollLink>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.nav>
+      <a href="#contact" className="btn-nav-phone">+91-8882988847</a>
+    </nav>
   );
 };
 
 const Hero = () => {
-  const { scrollY } = useScroll();
-  const yBg = useTransform(scrollY, [0, 1000], [0, 300]);
-  const opacityText = useTransform(scrollY, [0, 500], [1, 0]);
-
   return (
-    <section id="hero" className="hero">
-      <motion.div 
-        className="hero-bg"
-        style={{ y: yBg }}
-      ></motion.div>
+    <section id="overview" className="hero">
+      <div className="hero-bg"></div>
       <div className="hero-overlay"></div>
       
-      <motion.div 
-        className="hero-content"
-        style={{ opacity: opacityText }}
-        variants={staggerContainer}
-        initial="hidden"
-        animate="visible"
-      >
-        <motion.span variants={fadeUp} className="hero-tagline">
-          Luxury Real Estate Advisory
-        </motion.span>
-        <motion.h1 variants={fadeUp} className="hero-title">
-          Discover Luxury Living in Noida’s Finest Addresses
-        </motion.h1>
-        <motion.p variants={fadeUp} style={{ fontSize: '1.25rem', marginBottom: '2rem', maxWidth: '800px', margin: '0 auto 2rem auto', color: 'var(--color-text-muted)', fontWeight: 300 }}>
-          Carefully curated, transparently advised, and thoughtfully matched to your lifestyle. Because luxury is not just bought. It is understood.
-        </motion.p>
-        <motion.div variants={fadeUp} className="hero-buttons">
-          <ScrollLink to="contact" smooth={true} duration={800} className="btn-primary" style={{cursor: 'pointer'}}>
-            Step Inside <ArrowRight size={18} style={{marginLeft: '12px'}}/>
-          </ScrollLink>
-        </motion.div>
-      </motion.div>
-      
-      <ScrollLink to="highlights" smooth={true} duration={800} style={{ position: 'absolute', bottom: '2rem', color: 'rgba(255,255,255,0.3)', cursor: 'pointer', zIndex: 2 }}>
-        <motion.div animate={{ y: [0, 15, 0] }} transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}>
-          <ChevronDown size={40} strokeWidth={1} />
-        </motion.div>
-      </ScrollLink>
-    </section>
-  );
-};
-
-const DistinctionHighlights = () => {
-  const features = [
-    { title: "20+ Years Market Intelligence", icon: <Building2 size={36} strokeWidth={1} /> },
-    { title: "Deep Market Insight", icon: <TrendingUp size={36} strokeWidth={1} /> },
-    { title: "Exclusive Properties", icon: <Key size={36} strokeWidth={1} /> },
-    { title: "Tailored Consultation", icon: <Star size={36} strokeWidth={1} /> }
-  ];
-
-  return (
-    <div id="highlights" style={{ background: 'var(--color-background)' }}>
-      <motion.div 
-        className="highlights-container"
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-100px' }}
-      >
-        {features.map((item, idx) => (
-          <motion.div 
-            key={idx} 
-            variants={fadeUp}
-            className="highlight-card"
-          >
-            <div className="highlight-icon">
-              {item.icon}
-            </div>
-            <div className="highlight-text">{item.title}</div>
-          </motion.div>
-        ))}
-      </motion.div>
-    </div>
-  );
-};
-
-const AboutUs = () => {
-  return (
-    <section id="about" className="section">
-      <div className="overview-grid">
+      <div className="container hero-container">
         <motion.div 
-          className="overview-content"
+          className="hero-content"
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          variants={fadeRight}
+          animate="visible"
+          variants={staggerContainer}
         >
-          <span style={{ color: 'var(--color-primary)', letterSpacing: '4px', textTransform: 'uppercase', fontSize: '0.8rem', fontWeight: 600 }}>The Paradigm Shift</span>
-          <h2 className="section-title" style={{ textAlign: 'left', marginBottom: '2rem', marginTop: '1rem', fontSize: '3rem' }}>A Woman’s Perspective in Luxury</h2>
-          <p className="overview-desc">
-            Founded by <strong style={{ color: '#fff' }}>Oruj Fatima</strong> and <strong style={{ color: '#fff' }}>Sukhdeep Kaur</strong>, Sthapana Estates is distinguished by a perspective that is both intuitive and deeply perceptive.
-          </p>
-          <p className="overview-desc">
-            We possess an intimate understanding of every subtlety—be it location dynamics, architectural value, developer credibility, or long-term investment potential. Our journey has been closely aligned with iconic developments such as Gulshan Dynasty.
-          </p>
+          <motion.h1 variants={fadeInUp} className="hero-title">Sthapana Estates in Noida</motion.h1>
+          <motion.h3 variants={fadeInUp} className="hero-subtitle">Luxury Real Estate Advisory</motion.h3>
           
-          <div style={{ marginTop: '3rem' }}>
-            <ul style={{ listStyle: 'none', paddingLeft: '0' }}>
-              {['The emotional essence of a home', 'The finesse of design and detailing', 'The harmony between aesthetics, comfort, and functionality'].map((text, i) => (
-                <motion.li 
-                  key={i}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.2, duration: 0.5 }}
-                  style={{ color: 'var(--color-text-muted)', marginBottom: '1.2rem', display: 'flex', alignItems: 'center', gap: '1rem', fontSize: '1.1rem' }}
-                >
-                  <ShieldCheck size={24} style={{ color: 'var(--color-primary)' }} strokeWidth={1.5} /> {text}
-                </motion.li>
-              ))}
-            </ul>
-          </div>
-          <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-            style={{ marginTop: '3rem', paddingLeft: '1.5rem', borderLeft: '2px solid var(--color-primary)' }}
-          >
-            <p style={{ fontStyle: 'italic', color: '#fff', fontSize: '1.4rem', fontFamily: 'var(--font-heading)' }}>
-              "Because a home is not merely lived in—it is felt."
-            </p>
+          <motion.ul variants={fadeInUp} className="hero-checklist">
+            <li><CheckCircle2 size={20} /> 20+ Years Market Intelligence</li>
+            <li><CheckCircle2 size={20} /> Deep Market Insight</li>
+            <li><CheckCircle2 size={20} /> Exclusive Properties</li>
+            <li><CheckCircle2 size={20} /> Tailored Consultation</li>
+          </motion.ul>
+          
+          <motion.p variants={fadeInUp} className="hero-price">Starting from <strong>₹ 2.5 Cr onwards*</strong></motion.p>
+          <motion.div variants={fadeInUp} className="hero-payment">40:60 payment plan</motion.div>
+          
+          <motion.div variants={fadeInUp} className="hero-buttons">
+            <button className="btn-outline-white">Download Brochure</button>
+            <button className="btn-phone-dark">+91-8882988847</button>
+          </motion.div>
+          
+          <motion.div variants={fadeInUp} style={{ display: 'flex', gap: '30px', marginTop: '20px' }}>
+            <div>
+              <p style={{fontSize: '0.8rem', opacity: 0.8}}>Advisory by</p>
+              <div style={{ background: 'white', color: 'black', padding: '5px 10px', borderRadius: '4px', display: 'inline-block', fontWeight: 600, fontSize: '0.85rem' }}>Oruj Fatima</div>
+            </div>
+            <div>
+              <p style={{fontSize: '0.8rem', opacity: 0.8}}>Co-Advisory by</p>
+              <div style={{ background: 'white', color: 'black', padding: '5px 10px', borderRadius: '4px', display: 'inline-block', fontWeight: 600, fontSize: '0.85rem' }}>Sukhdeep Kaur</div>
+            </div>
           </motion.div>
         </motion.div>
-        
-        <motion.div
-           initial={{ opacity: 0, scale: 0.9 }}
-           whileInView={{ opacity: 1, scale: 1 }}
-           viewport={{ once: true, margin: '-100px' }}
-           transition={{ duration: 1 }}
-           className="overview-image-container"
+
+        <motion.div 
+          className="hero-form-box"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
         >
-          <img 
-            src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=2000" 
-            alt="Premium Interior" 
-            className="overview-image"
-          />
+          <div className="form-box-title">ENQUIRE NOW</div>
+          <form onSubmit={(e) => e.preventDefault()}>
+            <input type="text" className="form-input" placeholder="Name*" required />
+            <input type="email" className="form-input" placeholder="Email*" required />
+            <input type="tel" className="form-input" placeholder="Mobile Number*" required />
+            <button type="submit" className="btn-form-submit">Submit</button>
+          </form>
         </motion.div>
       </div>
     </section>
   );
 };
 
-const FeaturedProjects = () => {
-  const projects = [
-    {
-      name: "Gulshan Dynasty",
-      desc: "Ultra-luxury residences in Sector 144, Noida.",
-      points: ["Resale & Rental Opportunities", "Ready premium living experience"]
-    },
-    {
-      name: "Max Estate 105",
-      desc: "A new benchmark in luxury living.",
-      points: ["Modern design & curated lifestyle", "Premium connectivity advantage"]
-    },
-    {
-      name: "ACE Terra",
-      desc: "Upcoming premium development on Yamuna Expy.",
-      points: ["High growth corridor", "Future-ready investments"]
-    },
-    {
-      name: "Eldeco EOE",
-      desc: "Luxury living with trusted legacy.",
-      points: ["Premium specifications", "Strategic location infrastructure"]
-    }
-  ];
-
+const Amenities = () => {
   return (
-    <section id="projects" className="section" style={{ background: 'var(--color-surface)', overflow: 'hidden' }}>
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-50px' }}
-        variants={fadeUp}
-      >
-        <span style={{ color: 'var(--color-primary)', letterSpacing: '4px', textTransform: 'uppercase', fontSize: '0.8rem', fontWeight: 600, display: 'block', textAlign: 'center' }}>Portfolio</span>
-        <h2 className="section-title">Featured Opportunities</h2>
-        <p className="section-subtitle">
-          Curated residential masterpieces that reflect enduring value, trust, and refined living.
-        </p>
-      </motion.div>
-
+    <section id="amenities" className="section">
       <motion.div 
-        className="features-grid"
-        variants={staggerContainer}
+        className="container"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: '-50px' }}
+        viewport={{ once: true, amount: 0.3 }}
+        variants={fadeInUp}
       >
-        {projects.map((proj, idx) => (
-          <motion.div 
-            key={idx} 
-            variants={fadeUp}
-            className="feature-item"
-          >
-            <h3 style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontFamily: 'var(--font-heading)' }}>
-              <Gem size={28} style={{ color: 'var(--color-primary)' }} strokeWidth={1} /> {proj.name}
-            </h3>
-            <p style={{ color: 'var(--color-text-muted)', marginBottom: '2rem', fontSize: '1.1rem', fontWeight: 300 }}>{proj.desc}</p>
-            <ul style={{ paddingLeft: '0', listStyle: 'none' }}>
-              {proj.points.map((pt, ptIdx) => (
-                <li key={ptIdx} style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1rem', color: '#fff', fontSize: '0.95rem' }}>
-                  <CheckCircle2 size={18} color="var(--color-primary)" strokeWidth={1.5} style={{ flexShrink: 0 }} />
-                  <span>{pt}</span>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        ))}
+        <h2 className="section-title">Live your luxury life with Sthapana</h2>
+        <button className="btn-outline-white" style={{ background: '#9e7c5d', border: 'none' }}>
+          Get Floor Plan - Download Brochure
+        </button>
       </motion.div>
     </section>
   );
 };
 
-const ContactForm = () => {
+const Gallery = () => {
+  const images = [
+    "https://vedabyaurika.com/wp-content/uploads/2025/07/4.jpg",
+    "https://vedabyaurika.com/wp-content/uploads/2025/07/banner2.jpg",
+    "https://vedabyaurika.com/wp-content/uploads/2025/07/banner3.jpg"
+  ];
   return (
-    <section id="contact" className="section">
+    <section id="gallery" className="gallery-section">
+      <div className="container">
+        <motion.h2 
+          className="section-title"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.8 }}
+          variants={fadeInUp}
+        >
+          Project Gallery
+        </motion.h2>
+        <div className="gallery-grid">
+          {images.map((src, idx) => (
+            <motion.div 
+              key={idx} 
+              className="gallery-item"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.15 }}
+            >
+              <img src={src} alt="Gallery image" className="gallery-img" />
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const Portfolio = () => {
+  const projects = [
+    { name: "Gulshan Dynasty", desc: "Sector 144, Noida" },
+    { name: "Max Estate 105", desc: "Modern design & lifestyle" },
+    { name: "ACE Terra", desc: "Yamuna Expy" },
+    { name: "Eldeco EOE", desc: "Premium specifications" }
+  ];
+
+  return (
+    <section id="floor-plan" className="section-brown">
+      <div className="container">
+        <motion.h2 
+          className="section-title"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.8 }}
+          variants={fadeInUp}
+        >
+          Available Floor Plan
+        </motion.h2>
+        <motion.div 
+          className="cards-grid"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={staggerContainer}
+        >
+          {projects.map((proj, idx) => (
+            <motion.div key={idx} variants={fadeInUp} className="portfolio-card">
+              <h3 className="portfolio-title">{proj.name}</h3>
+              <p className="portfolio-desc">{proj.desc}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+        <motion.button 
+          className="btn-black"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+        >
+          Enquire Now
+        </motion.button>
+      </div>
+
+      {/* Torn Edge effect matching the image styling perfectly */}
+      <div className="torn-edge-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 50" preserveAspectRatio="none">
+          <path d="M0,50 L1000,50 L1000,20 Q950,5 900,25 T800,20 T700,30 T600,10 T500,25 T400,10 T300,25 T200,15 T100,25 T0,15 Z" fill="#ffffff" />
+        </svg>
+      </div>
+    </section>
+  );
+};
+
+const LocationAdvantage = () => {
+  return (
+    <section id="location" className="location-section">
+      <div className="container">
+        <motion.h2 
+          className="section-title"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.8 }}
+          variants={fadeInUp}
+        >
+          Location Advantage
+        </motion.h2>
+        <div className="location-grid">
+          <motion.div 
+            className="location-map"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+          >
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14028.930467554!2d77.38711485!3d28.4950337!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce883fb184e9f%3A0xeae7afaf42dfb!2sGulshan%20One29!5e0!3m2!1sen!2sin!4v1700000000000" 
+              width="100%" 
+              height="100%" 
+              style={{ border: 0, minHeight: '300px' }} 
+              allowFullScreen="" 
+              loading="lazy" 
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </motion.div>
+          <motion.div 
+            className="location-points"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={staggerContainer}
+          >
+            <ul>
+              {[
+                { bold: "Proximity to Headquarters", text: "and key commercial attractions." },
+                { bold: "Close to Noida Expressway", text: "— seamless access for national and international visitors." },
+                { bold: "Well-connected by road and rail", text: ", ensuring smooth transit." },
+                { bold: "", text: "Growing tourism, infrastructure, and hospitality ecosystem in Noida." },
+                { bold: "", text: "Surging demand for premium accommodation and private retreats." }
+              ].map((item, idx) => (
+                <motion.li key={idx} variants={fadeInUp}>
+                  <CheckCircle2 color="#9e7c5d" /> 
+                  <span>{item.bold ? <strong>{item.bold} </strong> : ""}{item.text}</span>
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const Consultation = () => {
+  return (
+    <section id="contact" className="consultation-section">
       <motion.div 
-        className="contact-grid"
+        className="container"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: '-100px' }}
-        variants={staggerContainer}
+        viewport={{ once: true, amount: 0.3 }}
+        variants={fadeInUp}
       >
-        <motion.div className="contact-info" variants={fadeRight}>
-          <span style={{ color: 'var(--color-primary)', letterSpacing: '4px', textTransform: 'uppercase', fontSize: '0.8rem', fontWeight: 600 }}>Get In Touch</span>
-          <h2 className="section-title" style={{ textAlign: 'left', fontSize: '3.5rem', marginBottom: '1rem' }}>Begin Your Journey</h2>
-          <p className="overview-desc" style={{ marginBottom: '3rem' }}>
-            Allow us to introduce you to a home that feels inherently yours. Schedule a private consultation to experience the location, ecosystem, and future firsthand.
-          </p>
-
-          <div className="contact-card">
-            <div className="icon"><MapPin size={24} /></div>
-            <div className="contact-card-content">
-              <h4>Headquarters</h4>
-              <p>Gulshan One29, Noida Expressway</p>
-            </div>
+        <h2 className="section-title">Flexible Payment Plan</h2>
+        <p className="consultation-subtitle">Receive Invitation For Private Viewing</p>
+        
+        <form className="consultation-form" onSubmit={(e) => e.preventDefault()}>
+          <div style={{ display: 'flex', gap: '15px', marginBottom: '15px' }}>
+            <input type="text" className="form-input" placeholder="Name*" style={{ margin: 0 }} required />
+            <input type="email" className="form-input" placeholder="Email*" style={{ margin: 0 }} required />
           </div>
-          
-          <div className="contact-card">
-            <div className="icon"><Phone size={24} /></div>
-            <div className="contact-card-content">
-              <h4>Private Consultation</h4>
-              <p>+91 88829 88847</p>
-            </div>
-          </div>
-
-          <div className="contact-card">
-            <div className="icon"><Mail size={24} /></div>
-            <div className="contact-card-content">
-              <h4>Concierge</h4>
-              <p>luxury@sthapanaestates.com</p>
-            </div>
-          </div>
-        </motion.div>
-
-        <motion.div 
-          variants={fadeUp} 
-          style={{ background: 'var(--color-surface)', padding: '4rem 3rem', border: '1px solid rgba(255,255,255,0.05)' }}
-        >
-          <form onSubmit={(e) => e.preventDefault()}>
-            <div className="form-group">
-              <input type="text" className="form-control" placeholder="YOUR FULL NAME" required />
-            </div>
-            <div className="form-group">
-              <input type="email" className="form-control" placeholder="EMAIL ADDRESS" required />
-            </div>
-            <div className="form-group">
-              <input type="tel" className="form-control" placeholder="PHONE NUMBER" required />
-            </div>
-            <div className="form-group" style={{ marginBottom: '3rem' }}>
-              <input type="text" className="form-control" placeholder="AREA OF INTEREST (e.g. Gulshan Dynasty)" />
-            </div>
-            <button type="submit" className="btn-primary" style={{ width: '100%' }}>
-              Request Callback
-            </button>
-          </form>
-        </motion.div>
+          <input type="tel" className="form-input" placeholder="Mobile Number*" required />
+          <textarea className="form-input form-textarea" placeholder="Message*" required></textarea>
+          <button type="submit" className="btn-submit-brown">Submit</button>
+        </form>
       </motion.div>
     </section>
+  );
+};
+
+const WelcomePopup = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    // Show popup shortly after load for new visitors
+    const timer = setTimeout(() => {
+      const hasVisited = sessionStorage.getItem('visited_sthapana');
+      if (!hasVisited) {
+        setIsOpen(true);
+        sessionStorage.setItem('visited_sthapana', 'true');
+      }
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <div className="popup-overlay">
+          <motion.div 
+            className="popup-content"
+            initial={{ opacity: 0, scale: 0.8, y: 30 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 30 }}
+            transition={{ duration: 0.5, type: 'spring' }}
+          >
+            <button className="popup-close" onClick={() => setIsOpen(false)}>×</button>
+            <h3 className="popup-title">Welcome to Sthapana Estates</h3>
+            <p>Discover luxury living in Noida’s finest addresses. Register for a private viewing and secure exclusive insights today.</p>
+            <button className="btn-submit-brown" onClick={() => setIsOpen(false)}>Explore Properties</button>
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>
   );
 };
 
 const Footer = () => {
   return (
-    <footer>
-      <motion.div 
-        className="footer-content"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeUp}
-      >
-        <ScrollLink to="hero" smooth={true} duration={1000} style={{ cursor: 'pointer', marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
-          <Feather color="var(--color-primary)" size={40} strokeWidth={1} />
-          <span style={{ fontFamily: 'var(--font-heading)', fontSize: '2.5rem', color: '#fff', letterSpacing: '4px' }}>STHAPANA</span>
-        </ScrollLink>
-        <h3 style={{ fontFamily: 'var(--font-body)', fontWeight: 300, color: 'var(--color-text-muted)', marginBottom: '1rem', letterSpacing: '2px', textTransform: 'uppercase' }}>
-          Where Luxury Meets Understanding.
-        </h3>
-        <div className="footer-nav">
-          <a href="#">About Us</a>
-          <a href="#">Our Vision</a>
-          <a href="#">Privacy Policy</a>
-          <a href="tel:+918882988847" style={{ color: 'var(--color-text)' }}>+91-8882988847</a>
-        </div>
-        <div className="copyright">
-          © {new Date().getFullYear()} Sthapana Estates. An Artful Approach to Luxury Real Estate.
-        </div>
-      </motion.div>
+    <footer className="footer">
+      <div className="footer-text">
+        © 2026 Sthapana Estates. All Rights Reserved.
+      </div>
+      <div className="footer-links">
+        <a href="#about">About</a>
+        <a href="#privacy">Privacy Policy</a>
+        <a href="#cookies">Cookie Policy</a>
+        <a href="#contact">Contact</a>
+      </div>
+      
+      <div className="whatsapp-float">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="white" width="28" height="28">
+          <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-2.1-3.6 2.1-3.2 7.6-14.1 2.8-5.6 1.4-10.6-.4-14.1-3.7-7.4-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+        </svg>
+      </div>
     </footer>
   );
 };
@@ -401,12 +369,14 @@ const Footer = () => {
 function App() {
   return (
     <div className="app">
+      <WelcomePopup />
       <Navbar />
       <Hero />
-      <DistinctionHighlights />
-      <AboutUs />
-      <FeaturedProjects />
-      <ContactForm />
+      <Amenities />
+      <Gallery />
+      <Portfolio />
+      <LocationAdvantage />
+      <Consultation />
       <Footer />
     </div>
   );
