@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --color-primary: #d32f2f; /* Theme Red */
-  --color-primary-hover: #b71c1c; /* Darker Theme Red */
+  --color-primary: #d32f2f;
+  /* Theme Red */
+  --color-primary-hover: #b71c1c;
+  /* Darker Theme Red */
   --color-text-dark: #111111;
   --color-text-light: #555555;
   --color-bg-light: #ffffff;
@@ -30,7 +32,12 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 500;
   color: var(--color-text-dark);
 }
@@ -50,7 +57,7 @@ a {
 /* --- Navbar --- */
 .navbar {
   position: fixed;
-  top: 0; 
+  top: 0;
   left: 0;
   width: 100%;
   background: rgba(255, 255, 255, 0.95);
@@ -60,7 +67,7 @@ a {
   justify-content: space-between;
   align-items: center;
   z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .nav-brand {
@@ -71,6 +78,27 @@ a {
   font-size: 2rem;
   font-weight: 600;
   letter-spacing: 1px;
+}
+
+.nav-logo-container {
+  width: 90px;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease;
+  mix-blend-mode: multiply; /* Removes white background so it perfectly fits the glassy navbar */
+}
+
+.nav-logo-container:hover {
+  transform: scale(1.05);
+}
+
+.nav-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
 }
 
 .nav-links {
@@ -100,6 +128,7 @@ a {
   cursor: pointer;
   transition: var(--transition);
 }
+
 .btn-nav-phone:hover {
   background: var(--color-primary-hover);
 }
@@ -115,7 +144,10 @@ a {
 
 .hero-bg {
   position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-image: url('/assets/img1.jpg');
   background-size: cover;
   background-position: center;
@@ -124,8 +156,12 @@ a {
 
 .hero-overlay {
   position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  /* Dark overlay */
   z-index: -1;
 }
 
@@ -171,6 +207,7 @@ a {
   margin-bottom: 10px;
   font-size: 1rem;
 }
+
 .hero-checklist li svg {
   color: #ff4d4d;
 }
@@ -179,6 +216,7 @@ a {
   font-size: 1.1rem;
   margin-bottom: 10px;
 }
+
 .hero-price strong {
   color: #ff4d4d;
   font-size: 1.2rem;
@@ -206,10 +244,12 @@ a {
   font-size: 0.95rem;
   transition: var(--transition);
 }
+
 .btn-outline-white:hover {
   background: white;
   color: black;
 }
+
 .btn-phone-dark {
   background: transparent;
   border: 1px solid white;
@@ -226,7 +266,7 @@ a {
   border-radius: 12px;
   width: 400px;
   max-width: 100%;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   background-clip: padding-box;
 }
 
@@ -249,6 +289,7 @@ a {
   font-family: var(--font-main);
   background: white;
 }
+
 .form-input:focus {
   outline: none;
   border-color: var(--color-primary);
@@ -266,6 +307,7 @@ a {
   cursor: pointer;
   transition: var(--transition);
 }
+
 .btn-form-submit:hover {
   background: var(--color-primary-hover);
 }
@@ -310,12 +352,13 @@ a {
   background: #fdfaf6;
   border-radius: 8px;
   padding: 60px 20px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   transition: var(--transition);
 }
+
 .portfolio-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .portfolio-title {
@@ -324,6 +367,7 @@ a {
   font-weight: 500;
   margin-bottom: 10px;
 }
+
 .portfolio-desc {
   color: var(--color-text-dark);
   font-size: 0.9rem;
@@ -339,6 +383,7 @@ a {
   cursor: pointer;
   transition: var(--transition);
 }
+
 .btn-black:hover {
   background: #333;
 }
@@ -348,6 +393,7 @@ a {
   padding: 80px 0;
   background: white;
 }
+
 .gallery-section .section-title {
   text-align: center;
   color: var(--color-primary);
@@ -355,11 +401,13 @@ a {
   font-weight: 500;
   margin-bottom: 50px;
 }
+
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
 }
+
 .gallery-img {
   width: 100%;
   height: 250px;
@@ -367,10 +415,12 @@ a {
   border-radius: 8px;
   transition: transform 0.4s ease;
 }
+
 .gallery-item {
   overflow: hidden;
   border-radius: 8px;
 }
+
 .gallery-item:hover .gallery-img {
   transform: scale(1.05);
 }
@@ -378,11 +428,13 @@ a {
 /* Torn Edge SVG */
 .torn-edge-container {
   position: absolute;
-  bottom: -2px; /* Pull it slightly down to avoid 1px gaps */
+  bottom: -2px;
+  /* Pull it slightly down to avoid 1px gaps */
   left: 0;
   width: 100%;
   line-height: 0;
 }
+
 .torn-edge-container svg {
   display: block;
   width: calc(100% + 1.3px);
@@ -394,6 +446,7 @@ a {
   padding: 80px 0;
   background: white;
 }
+
 .location-section .section-title {
   color: var(--color-primary);
   font-size: 2.2rem;
@@ -431,6 +484,7 @@ a {
   margin-bottom: 25px;
   font-size: 1.05rem;
 }
+
 .location-points li svg {
   color: var(--color-primary);
   flex-shrink: 0;
@@ -449,6 +503,7 @@ a {
   font-size: 2.2rem;
   margin-bottom: 10px;
 }
+
 .consultation-subtitle {
   color: var(--color-text-light);
   margin-bottom: 40px;
@@ -480,7 +535,8 @@ a {
 
 /* --- Footer --- */
 .footer {
-  background: var(--color-primary-hover); /* Match theme red */
+  background: var(--color-primary-hover);
+  /* Match theme red */
   color: white;
   padding: 20px 5%;
   display: flex;
@@ -498,9 +554,11 @@ a {
   display: flex;
   gap: 20px;
 }
+
 .footer-links a {
   font-size: 0.9rem;
 }
+
 .footer-links a:hover {
   text-decoration: underline;
 }
@@ -508,8 +566,11 @@ a {
 /* --- Popup --- */
 .popup-overlay {
   position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0,0,0,0.7);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(5px);
   z-index: 9999;
   display: flex;
@@ -517,6 +578,7 @@ a {
   justify-content: center;
   padding: 20px;
 }
+
 .popup-content {
   background: white;
   padding: 40px;
@@ -525,11 +587,13 @@ a {
   max-width: 450px;
   width: 100%;
   position: relative;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
+
 .popup-close {
   position: absolute;
-  top: 15px; right: 15px;
+  top: 15px;
+  right: 15px;
   background: none;
   border: none;
   font-size: 1.5rem;
@@ -537,23 +601,25 @@ a {
   color: #888;
   transition: color 0.3s;
 }
+
 .popup-close:hover {
   color: #333;
 }
+
 .popup-content .popup-title {
   color: var(--color-primary);
   margin-bottom: 20px;
   font-size: 1.8rem;
   font-weight: 600;
 }
+
 .popup-content p {
   color: var(--color-text-dark);
   margin-bottom: 30px;
   font-size: 1rem;
 }
 
-/* Float WhatsApp */
-.whatsapp-float {
+Float WhatsApp .whatsapp-float {
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -565,7 +631,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   cursor: pointer;
 }
@@ -577,15 +643,30 @@ a {
 
 /* --- Responsive --- */
 @media (max-width: 768px) {
-  .nav-links { display: none; }
-  .hero-container { flex-direction: column; }
-  .hero-form-box { width: 100%; }
-  .cards-grid { grid-template-columns: 1fr; }
-  .location-grid { flex-direction: column; }
-  .footer { 
-    justify-content: center; 
-    text-align: center; 
-    padding-bottom: 80px; 
+  .nav-links {
+    display: none;
+  }
+
+  .hero-container {
+    flex-direction: column;
+  }
+
+  .hero-form-box {
+    width: 100%;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .location-grid {
+    flex-direction: column;
+  }
+
+  .footer {
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 80px;
   }
 
   .mobile-bottom-bar {
@@ -595,11 +676,12 @@ a {
     left: 0;
     width: 100%;
     background: #000000;
-    z-index: 1001; /* above other things */
+    z-index: 1001;
+    /* above other things */
     height: 55px;
     align-items: center;
   }
-  
+
   .mobile-bottom-btn {
     flex: 1;
     display: flex;
@@ -624,6 +706,6 @@ a {
 
   /* Adjust WhatsApp Float position on mobile, so it doesn't overlap the new bar */
   .whatsapp-float {
-    bottom: 80px; 
+    bottom: 80px;
   }
 }
