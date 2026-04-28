@@ -44,7 +44,6 @@ const Navbar = () => {
         <a href="#location">Location Advantage</a>
         <a href="#contact">Contact Us</a>
       </div>
-      <a href="#contact" className="btn-nav-phone">+91-8882988847</a>
     </nav>
   );
 };
