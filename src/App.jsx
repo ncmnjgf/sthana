@@ -32,8 +32,9 @@ const Navbar = () => {
 
   return (
     <nav className="navbar" style={{ background: scrolled ? 'rgba(255, 255, 255, 0.98)' : 'rgba(255, 255, 255, 0.95)' }}>
-      <div className="nav-brand">
-        Sthapana
+      <div className="nav-brand" style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+        <div style={{ backgroundColor: '#d32f2f', color: '#fff', padding: '4px 12px', borderRadius: '4px', fontWeight: 700, fontSize: '1.8rem', letterSpacing: '2px' }}>STHA</div>
+        <div style={{ color: '#d32f2f', fontWeight: 600, fontSize: '1.8rem', letterSpacing: '1px' }}>PANA</div>
       </div>
       <div className="nav-links">
         <a href="#overview">Overview</a>
@@ -121,7 +122,7 @@ const Amenities = () => {
         variants={fadeInUp}
       >
         <h2 className="section-title">Live your luxury life with Sthapana</h2>
-        <button className="btn-outline-white" style={{ background: '#9e7c5d', border: 'none' }}>
+        <button className="btn-outline-white" style={{ background: '#d32f2f', border: 'none' }}>
           Get Floor Plan - Download Brochure
         </button>
       </motion.div>
@@ -131,9 +132,9 @@ const Amenities = () => {
 
 const Gallery = () => {
   const images = [
-    "https://vedabyaurika.com/wp-content/uploads/2025/07/4.jpg",
-    "https://vedabyaurika.com/wp-content/uploads/2025/07/banner2.jpg",
-    "https://vedabyaurika.com/wp-content/uploads/2025/07/banner3.jpg"
+    "/assets/img1.jpg",
+    "/assets/im2.jpg",
+    "/assets/img3.jpg"
   ];
   return (
     <section id="gallery" className="gallery-section">
@@ -175,7 +176,7 @@ const Portfolio = () => {
   ];
 
   return (
-    <section id="floor-plan" className="section-brown">
+    <section id="floor-plan" className="section-theme-color">
       <div className="container">
         <motion.h2 
           className="section-title"
@@ -268,7 +269,7 @@ const LocationAdvantage = () => {
                 { bold: "", text: "Surging demand for premium accommodation and private retreats." }
               ].map((item, idx) => (
                 <motion.li key={idx} variants={fadeInUp}>
-                  <CheckCircle2 color="#9e7c5d" /> 
+                  <CheckCircle2 color="#d32f2f" /> 
                   <span>{item.bold ? <strong>{item.bold} </strong> : ""}{item.text}</span>
                 </motion.li>
               ))}
