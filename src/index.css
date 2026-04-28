@@ -570,6 +570,11 @@ a {
   cursor: pointer;
 }
 
+/* --- Mobile Bottom Bar --- */
+.mobile-bottom-bar {
+  display: none;
+}
+
 /* --- Responsive --- */
 @media (max-width: 768px) {
   .nav-links { display: none; }
@@ -577,5 +582,48 @@ a {
   .hero-form-box { width: 100%; }
   .cards-grid { grid-template-columns: 1fr; }
   .location-grid { flex-direction: column; }
-  .footer { justify-content: center; text-align: center; }
+  .footer { 
+    justify-content: center; 
+    text-align: center; 
+    padding-bottom: 80px; 
+  }
+
+  .mobile-bottom-bar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #000000;
+    z-index: 1001; /* above other things */
+    height: 55px;
+    align-items: center;
+  }
+  
+  .mobile-bottom-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 500;
+    height: 100%;
+  }
+
+  .mobile-bottom-btn:hover {
+    background: #1a1a1a;
+  }
+
+  .mobile-bottom-divider {
+    width: 1px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  /* Adjust WhatsApp Float position on mobile, so it doesn't overlap the new bar */
+  .whatsapp-float {
+    bottom: 80px; 
+  }
 }
