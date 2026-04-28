@@ -41,7 +41,12 @@ const Navbar = ({ setView }) => {
   };
 
   return (
-    <nav className="navbar" style={{ background: scrolled ? 'rgba(255, 255, 255, 0.98)' : 'rgba(255, 255, 255, 0.95)' }}>
+    <nav className="navbar" style={{ 
+      background: scrolled ? 'rgba(255, 255, 255, 0.4)' : 'rgba(255, 255, 255, 0.95)',
+      backdropFilter: scrolled ? 'blur(15px)' : 'blur(10px)',
+      boxShadow: scrolled ? '0 4px 30px rgba(0, 0, 0, 0.1)' : '0 2px 10px rgba(0,0,0,0.05)',
+      transition: 'all 0.3s ease'
+    }}>
       <div className="nav-brand" style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }} onClick={() => { if(setView) { setView('home'); window.scrollTo(0,0); } }}>
         <div className="nav-logo-container">
           <img src="/logos.png" alt="Sthapana Estates" className="nav-logo" />
@@ -93,7 +98,9 @@ const Hero = ({ openPopup, handleEmailSubmit }) => {
           <motion.div variants={fadeInUp} style={{ display: 'flex', gap: '30px', marginTop: '20px' }}>
             <div>
               <p style={{ fontSize: '0.8rem', opacity: 0.8 }}>Advisory by</p>
-              <div style={{ background: 'white', color: 'black', padding: '5px 10px', borderRadius: '4px', display: 'inline-block', fontWeight: 600, fontSize: '0.85rem' }}>Oruj Fatima</div>
+              <div style={{ background: 'white', color: 'black', padding: '5px 10px', borderRadius: '4px', display: 'inline-block', fontWeight: 600, fontSize: '0.85rem', marginBottom: '8px' }}>Oruj Fatima</div>
+              <a href="tel:9654212000" style={{ display: 'block', color: 'white', fontSize: '0.85rem', textDecoration: 'none', marginBottom: '3px' }}>📞 +91 9654212000</a>
+              <a href="mailto:orujfatima@gmail.com" style={{ display: 'block', color: 'white', fontSize: '0.85rem', textDecoration: 'none' }}>✉️ orujfatima@gmail.com</a>
             </div>
             <div>
               <p style={{ fontSize: '0.8rem', opacity: 0.8 }}>Co-Advisory by</p>
