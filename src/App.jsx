@@ -334,9 +334,13 @@ const WelcomePopup = () => {
             transition={{ duration: 0.5, type: 'spring' }}
           >
             <button className="popup-close" onClick={() => setIsOpen(false)}>×</button>
-            <h3 className="popup-title">Welcome to Sthapana Estates</h3>
-            <p>Discover luxury living in Noida’s finest addresses. Register for a private viewing and secure exclusive insights today.</p>
-            <button className="btn-submit-brown" onClick={() => setIsOpen(false)}>Explore Properties</button>
+            <div className="form-box-title" style={{ fontSize: '1.5rem', marginBottom: '15px' }}>ENQUIRE NOW</div>
+            <form onSubmit={(e) => { e.preventDefault(); setIsOpen(false); }}>
+              <input type="text" className="form-input" placeholder="Name*" required />
+              <input type="email" className="form-input" placeholder="Email*" required />
+              <input type="tel" className="form-input" placeholder="Mobile Number*" required />
+              <button type="submit" className="btn-form-submit">Submit</button>
+            </form>
           </motion.div>
         </div>
       )}
