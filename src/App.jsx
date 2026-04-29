@@ -62,7 +62,7 @@ const Navbar = ({ setView }) => {
         <a href="#contact" onClick={(e) => handleLinkClick(e, 'contact')}>Contact Us</a>
       </div>
       <div className="nav-action" style={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
-        <a href="tel:+91-9654212000" className="btn-nav-phone" style={{ textDecoration: 'none', background: '#9e7c50', borderRadius: '4px', padding: '10px 24px', color: 'white', fontWeight: 500, transition: 'all 0.3s' }}>+91-9654212000</a>
+        <a href="tel:+91-9654212000" className="btn-nav-phone" style={{ textDecoration: 'none', background: '#d84c19ff', borderRadius: '4px', padding: '10px 24px', color: 'white', fontWeight: 500, transition: 'all 0.3s' }}>+91-9654212000</a>
       </div>
     </nav>
   );
