@@ -42,11 +42,11 @@ const Navbar = ({ setView }) => {
 
   return (
     <nav className="navbar" style={{ 
-      background: scrolled ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.6)',
-      backdropFilter: scrolled ? 'blur(10px)' : 'blur(5px)',
-      boxShadow: scrolled ? '0 2px 10px rgba(0, 0, 0, 0.1)' : '0 2px 10px rgba(0, 0, 0, 0.05)',
+      background: 'rgba(255, 255, 255, 0.6)',
+      backdropFilter: 'blur(5px)',
+      boxShadow: '0 2px 10px rgba(0, 0, 0, 0.05)',
       transition: 'all 0.4s ease',
-      borderBottom: scrolled ? 'none' : '1px solid rgba(255, 255, 255, 0.2)'
+      borderBottom: '1px solid rgba(255, 255, 255, 0.2)'
     }}>
       <div className="nav-brand" style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', flex: 1 }} onClick={() => { if(setView) { setView('home'); window.scrollTo(0,0); } }}>
         <div className="nav-logo-container">
