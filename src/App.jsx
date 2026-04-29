@@ -79,8 +79,7 @@ const Hero = ({ openPopup, handleEmailSubmit }) => {
           variants={staggerContainer}
           style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}
         >
-          <motion.h1 variants={fadeInUp} className="hero-title" style={{ fontSize: '2.2rem', fontWeight: 500, letterSpacing: '0.5px', lineHeight: '1.3' }}>Discover Luxury Living in Noida’s Finest Addresses</motion.h1>
-          <motion.h3 variants={fadeInUp} className="hero-subtitle" style={{ fontSize: '1.1rem', fontWeight: 400, marginBottom: '25px', opacity: 0.9 }}>Luxury Real Estate. Curated with a Woman’s Perspective.</motion.h3>
+          <motion.h1 variants={fadeInUp} className="hero-title" style={{ fontSize: '2.2rem', fontWeight: 500, letterSpacing: '0.5px', lineHeight: '1.3', marginBottom: '25px' }}>Luxury Real Estate. Curated with a Woman’s Perspective.</motion.h1>
 
           <motion.ul variants={fadeInUp} className="hero-checklist" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '8px', padding: 0, margin: '0 0 25px 0' }}>
             <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '1.05rem', fontWeight: 400 }}><CheckCircle2 size={18} color="#b78e58" /> The emotional essence of a home</li>
