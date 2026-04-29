@@ -328,6 +328,56 @@ a {
   margin-bottom: 40px;
 }
 
+/* --- Live your luxury life Amenities Grid --- */
+.amenities-grid-section {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.amenities-boxes {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.amenity-box {
+  background: rgba(253, 250, 246, 0.85); /* Creamy white translucent */
+  backdrop-filter: blur(5px);
+  width: 160px;
+  height: 160px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-primary); /* Red icons/text by default */
+  transition: var(--transition);
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.amenity-box:hover {
+  background: var(--color-primary); /* Red on hover */
+  color: #fdfaf6; /* Creamy white text/icons on hover */
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.amenity-icon {
+  margin-bottom: 15px;
+}
+
+.amenity-name {
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-align: center;
+  padding: 0 10px;
+  line-height: 1.3;
+}
+
 /* --- Projects / Floor Plan Section (Red Background) --- */
 .section-theme-color {
   background-color: var(--color-primary);
@@ -681,6 +731,16 @@ Float WhatsApp .whatsapp-float {
 
   .hero-form-box {
     width: 100%;
+    padding: 20px;
+  }
+
+  .consultation-form-wrapper {
+    padding: 20px !important;
+  }
+
+  .form-input, .form-select, .form-textarea, .btn-form-submit, .btn-submit-brown {
+    padding: 10px !important;
+    font-size: 0.9rem !important;
   }
 
   .cards-grid {

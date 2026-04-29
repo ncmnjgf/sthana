@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle2, Smartphone } from 'lucide-react';
+import { CheckCircle2, Smartphone, Users, Utensils, Leaf, Sparkles, Waves, Dumbbell } from 'lucide-react';
 import './index.css';
 
 // Animation Variables
@@ -77,21 +77,21 @@ const Hero = ({ openPopup, handleEmailSubmit }) => {
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
-          style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+          style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}
         >
-          <motion.h1 variants={fadeInUp} className="hero-title" style={{ fontSize: '2.8rem', fontWeight: 500, letterSpacing: '0.5px' }}>Discover Luxury Living in Noida’s Finest Addresses</motion.h1>
-          <motion.h3 variants={fadeInUp} className="hero-subtitle" style={{ fontSize: '1.2rem', fontWeight: 400, marginBottom: '25px', opacity: 0.9 }}>Luxury Real Estate. Curated with a Woman’s Perspective.</motion.h3>
+          <motion.h1 variants={fadeInUp} className="hero-title" style={{ fontSize: '2.2rem', fontWeight: 500, letterSpacing: '0.5px', lineHeight: '1.3' }}>Discover Luxury Living in Noida’s Finest Addresses</motion.h1>
+          <motion.h3 variants={fadeInUp} className="hero-subtitle" style={{ fontSize: '1.1rem', fontWeight: 400, marginBottom: '25px', opacity: 0.9 }}>Luxury Real Estate. Curated with a Woman’s Perspective.</motion.h3>
 
-          <motion.ul variants={fadeInUp} className="hero-checklist" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', padding: 0, margin: '0 0 25px 0' }}>
+          <motion.ul variants={fadeInUp} className="hero-checklist" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '8px', padding: 0, margin: '0 0 25px 0' }}>
             <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '1.05rem', fontWeight: 400 }}><CheckCircle2 size={18} color="#b78e58" /> The emotional essence of a home</li>
             <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '1.05rem', fontWeight: 400 }}><CheckCircle2 size={18} color="#b78e58" /> The finesse of design and detailing</li>
             <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '1.05rem', fontWeight: 400 }}><CheckCircle2 size={18} color="#b78e58" /> The harmony between aesthetics, comfort, and functionality</li>
           </motion.ul>
 
-          <motion.p variants={fadeInUp} className="hero-price" style={{ fontSize: '1.2rem', fontWeight: 500, margin: '10px 0 25px 0' }}><strong style={{ fontSize: '1.3rem', color: '#fff', fontWeight: 600 }}>Because a home is not merely lived in—it is felt.</strong></motion.p>
+          <motion.p variants={fadeInUp} className="hero-price" style={{ fontSize: '1.1rem', fontWeight: 400, margin: '10px 0 25px 0' }}><strong style={{ fontSize: '1.2rem', color: '#fff', fontWeight: 500 }}>Because a home is not merely lived in—it is felt.</strong></motion.p>
 
           <motion.div variants={fadeInUp} className="hero-buttons">
-            <button style={{ background: '#b72d21ff', color: 'white', padding: '12px 35px', border: 'none', borderRadius: '4px', fontSize: '1rem', cursor: 'pointer', fontWeight: 500, transition: 'background 0.3s' }} onClick={openPopup}>Download Brochure</button>
+            <button style={{ background: '#b72d21ff', color: 'white', padding: '12px 35px', border: 'none', borderRadius: '4px', fontSize: '1rem', cursor: 'pointer', fontWeight: 500, transition: 'background 0.3s' }} onClick={openPopup}>+91-9654212000</button>
           </motion.div>
         </motion.div>
 
@@ -108,6 +108,7 @@ const Hero = ({ openPopup, handleEmailSubmit }) => {
             <input type="tel" name="mobile" className="form-input" placeholder="Mobile Number*" required />
             <select name="project" className="form-input" defaultValue="">
               <option value="" disabled>Select Property of Interest</option>
+              <option value="Gulshan Dynasty">Gulshan Dynasty</option>
               <option value="Max Estate 105">Max Estate 105</option>
               <option value="ACE Terra">ACE Terra</option>
               <option value="Eldeco EOE">Eldeco EOE</option>
@@ -153,23 +154,58 @@ const OverviewSection = () => {
   );
 };
 
-const FounderSection = () => {
+
+
+const AmenitiesGrid = ({ openPopup }) => {
+  const amenities = [
+    { name: "Multipurpose Hall", icon: <Users size={38} strokeWidth={1.5} /> },
+    { name: "Dining Restaurants", icon: <Utensils size={38} strokeWidth={1.5} /> },
+    { name: "Yoga", icon: <Leaf size={38} strokeWidth={1.5} /> },
+    { name: "Spa", icon: <Sparkles size={38} strokeWidth={1.5} /> },
+    { name: "Rooftop Pool", icon: <Waves size={38} strokeWidth={1.5} /> },
+    { name: "Gymnasium", icon: <Dumbbell size={38} strokeWidth={1.5} /> }
+  ];
+
   return (
-    <section className="section" style={{ background: '#fdfaf6', padding: '60px 0' }}>
-      <div className="container" style={{ textAlign: 'center' }}>
-        <h2 className="section-title" style={{ fontSize: '2rem', color: '#d32f2f', marginBottom: '40px', fontWeight: 500 }}>Our Advisory Team</h2>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '30px', flexWrap: 'wrap' }}>
-          <div style={{ background: 'white', padding: '30px', borderRadius: '8px', boxShadow: '0 4px 15px rgba(0,0,0,0.05)', flex: '1', minWidth: '280px', maxWidth: '350px' }}>
-            <p style={{ fontSize: '0.9rem', color: '#888', marginBottom: '5px' }}>Advisory by</p>
-            <h3 style={{ fontSize: '1.4rem', color: '#111', marginBottom: '15px' }}>Oruj Fatima</h3>
-            <a href="tel:9654212000" style={{ display: 'block', color: '#d32f2f', fontSize: '1rem', textDecoration: 'none', marginBottom: '8px' }}>📞 +91 9654212000</a>
-            <a href="mailto:orujfatima@gmail.com" style={{ display: 'block', color: '#d32f2f', fontSize: '1rem', textDecoration: 'none' }}>✉️ orujfatima@gmail.com</a>
-          </div>
-          <div style={{ background: 'white', padding: '30px', borderRadius: '8px', boxShadow: '0 4px 15px rgba(0,0,0,0.05)', flex: '1', minWidth: '280px', maxWidth: '350px' }}>
-            <p style={{ fontSize: '0.9rem', color: '#888', marginBottom: '5px' }}>Co-Advisory by</p>
-            <h3 style={{ fontSize: '1.4rem', color: '#111', marginBottom: '15px' }}>Sukhdeep Kaur</h3>
-          </div>
-        </div>
+    <section id="amenities" className="amenities-grid-section">
+      <div className="hero-bg" style={{ backgroundImage: "url('/assets/img1.jpg')", zIndex: -2 }}></div>
+      <div className="hero-overlay" style={{ background: 'rgba(0,0,0,0.6)', zIndex: -1 }}></div>
+      
+      <div className="container" style={{ position: 'relative', zIndex: 1, padding: '80px 0 120px', textAlign: 'center' }}>
+        <motion.h2 
+          className="section-title" 
+          style={{ color: 'white', marginBottom: '50px', fontSize: '2.5rem', fontWeight: 500 }}
+          initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.8 }} variants={fadeInUp}
+        >
+          Live your luxury life with Sthapana
+        </motion.h2>
+        
+        <motion.div 
+          className="amenities-boxes"
+          initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={staggerContainer}
+        >
+          {amenities.map((item, idx) => (
+            <motion.div key={idx} variants={fadeInUp} className="amenity-box">
+              <div className="amenity-icon">{item.icon}</div>
+              <p className="amenity-name">{item.name}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <motion.button
+          className="btn-submit-brown"
+          initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}
+          onClick={() => openPopup()}
+          style={{ marginTop: '50px', background: 'var(--color-primary)', color: '#fdfaf6', padding: '12px 40px', fontSize: '1.05rem' }}
+        >
+          Enquire Now
+        </motion.button>
+      </div>
+
+      <div className="torn-edge-container" style={{ position: 'absolute', bottom: '-2px', left: 0, width: '100%', lineHeight: 0, zIndex: 1 }}>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 50" preserveAspectRatio="none" style={{ display: 'block', width: 'calc(100% + 1.3px)', height: '50px' }}>
+          <path d="M0,50 L1000,50 L1000,20 Q950,5 900,25 T800,20 T700,30 T600,10 T500,25 T400,10 T300,25 T200,15 T100,25 T0,15 Z" fill="#fdfaf6" />
+        </svg>
       </div>
     </section>
   );
@@ -177,7 +213,7 @@ const FounderSection = () => {
 
 const ExpertiseSection = () => {
   return (
-    <section id="amenities" className="section" style={{ background: '#fdfaf6', padding: '60px 0' }}>
+    <section className="section" style={{ background: '#fdfaf6', padding: '60px 0' }}>
       <div className="container">
         <motion.h2
           className="section-title"
@@ -254,6 +290,7 @@ const Gallery = () => {
 
 const Portfolio = ({ openPopup }) => {
   const projects = [
+    { name: "Gulshan Dynasty", desc: "Ultra-luxury residences in Sector 144, Noida", features: ["Resale & Rental Opportunities Available", "Ready premium living experience"] },
     { name: "Max Estate 105", desc: "A new benchmark in luxury living", features: ["Modern design & curated lifestyle", "Premium connectivity & location advantage"] },
     { name: "ACE Terra", desc: "Upcoming premium development on Yamuna Expressway", features: ["High growth corridor", "Ideal for future-ready investments"] },
     { name: "Eldeco EOE", desc: "Luxury living with trusted legacy", features: ["Premium specifications", "Strategic location near upcoming infrastructure"] }
@@ -464,6 +501,7 @@ const Consultation = ({ handleEmailSubmit }) => {
           <input type="tel" name="mobile" className="form-input" placeholder="Mobile Number*" required />
           <select name="project" className="form-input" defaultValue="">
             <option value="" disabled>Select Property of Interest (Optional)</option>
+            <option value="Gulshan Dynasty">Gulshan Dynasty</option>
             <option value="Max Estate 105">Max Estate 105</option>
             <option value="ACE Terra">ACE Terra</option>
             <option value="Eldeco EOE">Eldeco EOE</option>
@@ -511,6 +549,7 @@ const WelcomePopup = ({ isOpen, setIsOpen, handleEmailSubmit, defaultProject }) 
               <input type="tel" name="mobile" className="form-input" placeholder="Mobile Number*" required />
               <select name="project" className="form-input" defaultValue={defaultProject || ""}>
                 <option value="" disabled>Select Property of Interest (Optional)</option>
+                <option value="Gulshan Dynasty">Gulshan Dynasty</option>
                 <option value="Max Estate 105">Max Estate 105</option>
                 <option value="ACE Terra">ACE Terra</option>
                 <option value="Eldeco EOE">Eldeco EOE</option>
@@ -673,13 +712,13 @@ function App() {
         <>
           <Hero openPopup={openPopup} handleEmailSubmit={handleEmailSubmit} />
           <OverviewSection />
-          <FounderSection />
           <ExpertiseSection />
-          <Gallery />
+          <AmenitiesGrid openPopup={openPopup} />
           <Portfolio openPopup={openPopup} />
           <ServicesSection />
-          <LocationAdvantage />
           <WhyUsSection />
+          <LocationAdvantage />
+          <Gallery />
           <Consultation handleEmailSubmit={handleEmailSubmit} />
         </>
       )}
