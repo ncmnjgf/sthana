@@ -783,22 +783,22 @@ Float WhatsApp .whatsapp-float {
     flex-direction: column;
   }
   .veda-hero-content {
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
   }
   .veda-hero-title {
     font-size: 1.8rem;
-    text-align: center;
+    text-align: left;
   }
   .veda-hero-checklist {
-    align-items: center;
+    align-items: flex-start;
   }
   .veda-hero-checklist li {
     font-size: 0.95rem;
   }
   .veda-hero-price {
     font-size: 1rem;
-    text-align: center;
+    text-align: left;
   }
 
   .hero-form-box {
