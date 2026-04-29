@@ -76,36 +76,22 @@ const Hero = ({ openPopup, handleEmailSubmit }) => {
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
+          style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
         >
-          <motion.h1 variants={fadeInUp} className="hero-title">Sthapana Estates in Noida</motion.h1>
-          <motion.h3 variants={fadeInUp} className="hero-subtitle">Luxury Real Estate Advisory</motion.h3>
+          <motion.h1 variants={fadeInUp} className="hero-title" style={{ fontSize: '2.8rem', fontWeight: 500, letterSpacing: '0.5px' }}>Sthapana Estates in Noida</motion.h1>
+          <motion.h3 variants={fadeInUp} className="hero-subtitle" style={{ fontSize: '1.2rem', fontWeight: 400, marginBottom: '25px', opacity: 0.9 }}>Luxury Real Estate Advisory</motion.h3>
 
-          <motion.ul variants={fadeInUp} className="hero-checklist">
-            <li><CheckCircle2 size={20} /> 20+ Years Market Intelligence</li>
-            <li><CheckCircle2 size={20} /> Deep Market Insight</li>
-            <li><CheckCircle2 size={20} /> Exclusive Properties</li>
-            <li><CheckCircle2 size={20} /> Tailored Consultation</li>
+          <motion.ul variants={fadeInUp} className="hero-checklist" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', padding: 0, margin: '0 0 25px 0' }}>
+            <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '1.05rem', fontWeight: 400 }}><CheckCircle2 size={18} color="#b78e58" /> Income From Day 1</li>
+            <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '1.05rem', fontWeight: 400 }}><CheckCircle2 size={18} color="#b78e58" /> 20+ Years Market Intelligence</li>
+            <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '1.05rem', fontWeight: 400 }}><CheckCircle2 size={18} color="#b78e58" /> Exclusive Properties</li>
+            <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '1.05rem', fontWeight: 400 }}><CheckCircle2 size={18} color="#b78e58" /> Tailored Consultation</li>
           </motion.ul>
 
-          <motion.p variants={fadeInUp} className="hero-price">Starting from <strong>₹ 2.5 Cr onwards*</strong></motion.p>
-          <motion.div variants={fadeInUp} className="hero-payment">40:60 payment plan</motion.div>
+          <motion.p variants={fadeInUp} className="hero-price" style={{ fontSize: '1.2rem', fontWeight: 500, margin: '10px 0 25px 0' }}>Starting from <strong style={{ fontSize: '1.3rem', color: '#fff', fontWeight: 600 }}>₹ 2.5 Cr onwards*</strong></motion.p>
 
           <motion.div variants={fadeInUp} className="hero-buttons">
-            <button className="btn-outline-white" onClick={openPopup}>Download Brochure</button>
-            <button className="btn-phone-dark">+91-9654212000</button>
-          </motion.div>
-
-          <motion.div variants={fadeInUp} style={{ display: 'flex', gap: '30px', marginTop: '20px' }}>
-            <div>
-              <p style={{ fontSize: '0.8rem', opacity: 0.8 }}>Advisory by</p>
-              <div style={{ background: 'white', color: 'black', padding: '5px 10px', borderRadius: '4px', display: 'inline-block', fontWeight: 600, fontSize: '0.85rem', marginBottom: '8px' }}>Oruj Fatima</div>
-              <a href="tel:9654212000" style={{ display: 'block', color: 'white', fontSize: '0.85rem', textDecoration: 'none', marginBottom: '3px' }}>📞 +91 9654212000</a>
-              <a href="mailto:orujfatima@gmail.com" style={{ display: 'block', color: 'white', fontSize: '0.85rem', textDecoration: 'none' }}>✉️ orujfatima@gmail.com</a>
-            </div>
-            <div>
-              <p style={{ fontSize: '0.8rem', opacity: 0.8 }}>Co-Advisory by</p>
-              <div style={{ background: 'white', color: 'black', padding: '5px 10px', borderRadius: '4px', display: 'inline-block', fontWeight: 600, fontSize: '0.85rem' }}>Sukhdeep Kaur</div>
-            </div>
+            <button style={{ background: '#b72d21ff', color: 'white', padding: '12px 35px', border: 'none', borderRadius: '4px', fontSize: '1rem', cursor: 'pointer', fontWeight: 500, transition: 'background 0.3s' }} onClick={openPopup}>Download Brochure</button>
           </motion.div>
         </motion.div>
 
@@ -123,6 +109,28 @@ const Hero = ({ openPopup, handleEmailSubmit }) => {
             <button type="submit" className="btn-form-submit">Submit</button>
           </form>
         </motion.div>
+      </div>
+    </section>
+  );
+};
+
+const FounderSection = () => {
+  return (
+    <section className="section" style={{ background: '#fdfaf6', padding: '60px 0' }}>
+      <div className="container" style={{ textAlign: 'center' }}>
+        <h2 className="section-title" style={{ fontSize: '2rem', color: '#d32f2f', marginBottom: '40px', fontWeight: 500 }}>Our Advisory Team</h2>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '30px', flexWrap: 'wrap' }}>
+          <div style={{ background: 'white', padding: '30px', borderRadius: '8px', boxShadow: '0 4px 15px rgba(0,0,0,0.05)', flex: '1', minWidth: '280px', maxWidth: '350px' }}>
+            <p style={{ fontSize: '0.9rem', color: '#888', marginBottom: '5px' }}>Advisory by</p>
+            <h3 style={{ fontSize: '1.4rem', color: '#111', marginBottom: '15px' }}>Oruj Fatima</h3>
+            <a href="tel:9654212000" style={{ display: 'block', color: '#d32f2f', fontSize: '1rem', textDecoration: 'none', marginBottom: '8px' }}>📞 +91 9654212000</a>
+            <a href="mailto:orujfatima@gmail.com" style={{ display: 'block', color: '#d32f2f', fontSize: '1rem', textDecoration: 'none' }}>✉️ orujfatima@gmail.com</a>
+          </div>
+          <div style={{ background: 'white', padding: '30px', borderRadius: '8px', boxShadow: '0 4px 15px rgba(0,0,0,0.05)', flex: '1', minWidth: '280px', maxWidth: '350px' }}>
+            <p style={{ fontSize: '0.9rem', color: '#888', marginBottom: '5px' }}>Co-Advisory by</p>
+            <h3 style={{ fontSize: '1.4rem', color: '#111', marginBottom: '15px' }}>Sukhdeep Kaur</h3>
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -508,6 +516,7 @@ function App() {
       {view === 'home' && (
         <>
           <Hero openPopup={openPopup} handleEmailSubmit={handleEmailSubmit} />
+          <FounderSection />
           <Amenities openPopup={openPopup} />
           <Gallery />
           <Portfolio openPopup={openPopup} />
