@@ -42,24 +42,27 @@ const Navbar = ({ setView }) => {
 
   return (
     <nav className="navbar" style={{ 
-      background: scrolled ? 'rgba(253, 250, 246, 0.5)' : 'rgba(253, 250, 246, 0.7)',
-      backdropFilter: scrolled ? 'blur(10px)' : 'blur(8px)',
-      boxShadow: scrolled ? '0 4px 30px rgba(0, 0, 0, 0.1)' : '0 2px 10px rgba(0,0,0,0.05)',
-      transition: 'all 0.3s ease'
+      background: scrolled ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.6)',
+      backdropFilter: scrolled ? 'blur(10px)' : 'blur(5px)',
+      boxShadow: scrolled ? '0 2px 10px rgba(0, 0, 0, 0.1)' : '0 2px 10px rgba(0, 0, 0, 0.05)',
+      transition: 'all 0.4s ease',
+      borderBottom: scrolled ? 'none' : '1px solid rgba(255, 255, 255, 0.2)'
     }}>
-      <div className="nav-brand" style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }} onClick={() => { if(setView) { setView('home'); window.scrollTo(0,0); } }}>
+      <div className="nav-brand" style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', flex: 1 }} onClick={() => { if(setView) { setView('home'); window.scrollTo(0,0); } }}>
         <div className="nav-logo-container">
           <img src="/logos.png" alt="Sthapana Estates" className="nav-logo" />
         </div>
       </div>
-      <div className="nav-links">
+      <div className="nav-links" style={{ flex: 2, display: 'flex', justifyContent: 'center', gap: '30px' }}>
         <a href="#overview" onClick={(e) => handleLinkClick(e, 'overview')}>Overview</a>
         <a href="#amenities" onClick={(e) => handleLinkClick(e, 'amenities')}>Amenities</a>
         <a href="#gallery" onClick={(e) => handleLinkClick(e, 'gallery')}>Gallery</a>
         <a href="#floor-plan" onClick={(e) => handleLinkClick(e, 'floor-plan')}>Floor Plan</a>
         <a href="#location" onClick={(e) => handleLinkClick(e, 'location')}>Location Advantage</a>
         <a href="#contact" onClick={(e) => handleLinkClick(e, 'contact')}>Contact Us</a>
-        <a href="tel:+91-9654212000" className="btn-nav-phone" style={{ textDecoration: 'none' }}>+91-9654212000</a>
+      </div>
+      <div className="nav-action" style={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
+        <a href="tel:+91-9654212000" className="btn-nav-phone" style={{ textDecoration: 'none', background: '#9e7c50', borderRadius: '4px', padding: '10px 24px', color: 'white', fontWeight: 500, transition: 'all 0.3s' }}>+91-9654212000</a>
       </div>
     </nav>
   );
