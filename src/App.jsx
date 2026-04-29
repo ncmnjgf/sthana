@@ -42,8 +42,8 @@ const Navbar = ({ setView }) => {
 
   return (
     <nav className="navbar" style={{ 
-      background: scrolled ? 'rgba(255, 255, 255, 0.4)' : 'rgba(255, 255, 255, 0.95)',
-      backdropFilter: scrolled ? 'blur(15px)' : 'blur(10px)',
+      background: scrolled ? 'rgba(253, 250, 246, 0.5)' : 'rgba(253, 250, 246, 0.7)',
+      backdropFilter: scrolled ? 'blur(10px)' : 'blur(8px)',
       boxShadow: scrolled ? '0 4px 30px rgba(0, 0, 0, 0.1)' : '0 2px 10px rgba(0,0,0,0.05)',
       transition: 'all 0.3s ease'
     }}>
@@ -59,6 +59,7 @@ const Navbar = ({ setView }) => {
         <a href="#floor-plan" onClick={(e) => handleLinkClick(e, 'floor-plan')}>Floor Plan</a>
         <a href="#location" onClick={(e) => handleLinkClick(e, 'location')}>Location Advantage</a>
         <a href="#contact" onClick={(e) => handleLinkClick(e, 'contact')}>Contact Us</a>
+        <a href="tel:+91-9654212000" className="btn-nav-phone" style={{ textDecoration: 'none' }}>+91-9654212000</a>
       </div>
     </nav>
   );
@@ -105,6 +106,12 @@ const Hero = ({ openPopup, handleEmailSubmit }) => {
             <input type="text" name="name" className="form-input" placeholder="Name*" required />
             <input type="email" name="email" className="form-input" placeholder="Email*" required />
             <input type="tel" name="mobile" className="form-input" placeholder="Mobile Number*" required />
+            <select name="project" className="form-input" defaultValue="">
+              <option value="" disabled>Select Property of Interest</option>
+              <option value="Max Estate 105">Max Estate 105</option>
+              <option value="ACE Terra">ACE Terra</option>
+              <option value="Eldeco EOE">Eldeco EOE</option>
+            </select>
             <button type="submit" className="btn-form-submit">Submit</button>
           </form>
         </motion.div>
@@ -247,7 +254,6 @@ const Gallery = () => {
 
 const Portfolio = ({ openPopup }) => {
   const projects = [
-    { name: "Gulshan Dynasty", desc: "Ultra-luxury residences in Sector 144, Noida", features: ["Resale & Rental Opportunities Available", "Ready premium living experience"] },
     { name: "Max Estate 105", desc: "A new benchmark in luxury living", features: ["Modern design & curated lifestyle", "Premium connectivity & location advantage"] },
     { name: "ACE Terra", desc: "Upcoming premium development on Yamuna Expressway", features: ["High growth corridor", "Ideal for future-ready investments"] },
     { name: "Eldeco EOE", desc: "Luxury living with trusted legacy", features: ["Premium specifications", "Strategic location near upcoming infrastructure"] }
@@ -273,7 +279,7 @@ const Portfolio = ({ openPopup }) => {
           variants={staggerContainer}
         >
           {projects.map((proj, idx) => (
-            <motion.div key={idx} variants={fadeInUp} className="portfolio-card" style={{ display: 'flex', flexDirection: 'column' }}>
+            <motion.div key={idx} variants={fadeInUp} className="portfolio-card" style={{ display: 'flex', flexDirection: 'column' }} onClick={() => openPopup(proj.name)}>
               <h3 className="portfolio-title" style={{ marginBottom: '10px' }}>{proj.name}</h3>
               <p className="portfolio-desc" style={{ marginBottom: '15px', fontWeight: '500', color: '#d32f2f' }}>{proj.desc}</p>
               <ul style={{ listStyle: 'none', padding: 0, textAlign: 'left', marginTop: 'auto' }}>
@@ -456,6 +462,12 @@ const Consultation = ({ handleEmailSubmit }) => {
             <input type="email" name="email" className="form-input" placeholder="Email*" style={{ margin: 0 }} required />
           </div>
           <input type="tel" name="mobile" className="form-input" placeholder="Mobile Number*" required />
+          <select name="project" className="form-input" defaultValue="">
+            <option value="" disabled>Select Property of Interest (Optional)</option>
+            <option value="Max Estate 105">Max Estate 105</option>
+            <option value="ACE Terra">ACE Terra</option>
+            <option value="Eldeco EOE">Eldeco EOE</option>
+          </select>
           <textarea name="message" className="form-input form-textarea" placeholder="Message*" required></textarea>
           <button type="submit" className="btn-submit-brown">Submit</button>
         </form>
@@ -464,7 +476,7 @@ const Consultation = ({ handleEmailSubmit }) => {
   );
 };
 
-const WelcomePopup = ({ isOpen, setIsOpen, handleEmailSubmit }) => {
+const WelcomePopup = ({ isOpen, setIsOpen, handleEmailSubmit, defaultProject }) => {
   useEffect(() => {
     // Show popup shortly after load for new visitors
     const timer = setTimeout(() => {
@@ -497,6 +509,12 @@ const WelcomePopup = ({ isOpen, setIsOpen, handleEmailSubmit }) => {
               <input type="text" name="name" className="form-input" placeholder="Name*" required />
               <input type="email" name="email" className="form-input" placeholder="Email*" required />
               <input type="tel" name="mobile" className="form-input" placeholder="Mobile Number*" required />
+              <select name="project" className="form-input" defaultValue={defaultProject || ""}>
+                <option value="" disabled>Select Property of Interest (Optional)</option>
+                <option value="Max Estate 105">Max Estate 105</option>
+                <option value="ACE Terra">ACE Terra</option>
+                <option value="Eldeco EOE">Eldeco EOE</option>
+              </select>
               <button type="submit" className="btn-form-submit">Submit</button>
             </form>
           </motion.div>
@@ -618,31 +636,37 @@ const MobileBottomBar = () => {
 
 function App() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState("");
   const [view, setView] = useState('home');
-  const openPopup = () => setIsPopupOpen(true);
+
+  const openPopup = (projectName = "") => {
+    setSelectedProject(projectName);
+    setIsPopupOpen(true);
+  };
 
   const handleEmailSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
-    let name = "", email = "", mobile = "", message = "";
+    let name = "", email = "", mobile = "", message = "", project = "";
 
-    const inputs = form.querySelectorAll('input, textarea');
+    const inputs = form.querySelectorAll('input, select, textarea');
     inputs.forEach(input => {
       if (input.name === 'name' || input.placeholder?.includes('Name')) name = input.value;
       else if (input.name === 'email' || input.type === 'email') email = input.value;
       else if (input.name === 'mobile' || input.type === 'tel') mobile = input.value;
+      else if (input.name === 'project') project = input.value;
       else if (input.tagName.toLowerCase() === 'textarea') message = input.value;
     });
 
     const subject = encodeURIComponent("New Enquiry from Sthapana Estates");
-    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nMobile: ${mobile}${message ? `\nMessage: ${message}` : ""}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nMobile: ${mobile}${project ? `\nInterested In: ${project}` : ""}${message ? `\nMessage: ${message}` : ""}`);
     window.location.href = `mailto:Info@sthapanaestates.com?subject=${subject}&body=${body}`;
     form.reset();
   };
 
   return (
     <div className="app">
-      <WelcomePopup isOpen={isPopupOpen} setIsOpen={setIsPopupOpen} handleEmailSubmit={handleEmailSubmit} />
+      <WelcomePopup isOpen={isPopupOpen} setIsOpen={setIsPopupOpen} handleEmailSubmit={handleEmailSubmit} defaultProject={selectedProject} />
       <Navbar setView={setView} />
 
       {view === 'home' && (
