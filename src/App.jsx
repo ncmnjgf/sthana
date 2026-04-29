@@ -48,12 +48,12 @@ const Navbar = ({ setView }) => {
       transition: 'all 0.4s ease',
       borderBottom: '1px solid rgba(255, 255, 255, 0.2)'
     }}>
-      <div className="nav-brand" style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', flex: 1 }} onClick={() => { if(setView) { setView('home'); window.scrollTo(0,0); } }}>
+      <div className="nav-brand" onClick={() => { if(setView) { setView('home'); window.scrollTo(0,0); } }}>
         <div className="nav-logo-container">
           <img src="/logos.png" alt="Sthapana Estates" className="nav-logo" />
         </div>
       </div>
-      <div className="nav-links" style={{ flex: 2, display: 'flex', justifyContent: 'center', gap: '30px' }}>
+      <div className="nav-links">
         <a href="#overview" onClick={(e) => handleLinkClick(e, 'overview')}>Overview</a>
         <a href="#amenities" onClick={(e) => handleLinkClick(e, 'amenities')}>Amenities</a>
         <a href="#gallery" onClick={(e) => handleLinkClick(e, 'gallery')}>Gallery</a>
@@ -61,7 +61,7 @@ const Navbar = ({ setView }) => {
         <a href="#location" onClick={(e) => handleLinkClick(e, 'location')}>Location Advantage</a>
         <a href="#contact" onClick={(e) => handleLinkClick(e, 'contact')}>Contact Us</a>
       </div>
-      <div className="nav-action" style={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
+      <div className="nav-action">
         <a href="tel:+91-9654212000" className="btn-nav-phone" style={{ textDecoration: 'none', background: '#d84c19ff', borderRadius: '4px', padding: '10px 24px', color: 'white', fontWeight: 500, transition: 'all 0.3s' }}>+91-9654212000</a>
       </div>
     </nav>
@@ -76,21 +76,20 @@ const Hero = ({ openPopup, handleEmailSubmit }) => {
 
       <div className="container hero-container">
         <motion.div
-          className="hero-content"
+          className="hero-content veda-hero-content"
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
-          style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}
         >
-          <motion.h1 variants={fadeInUp} className="hero-title" style={{ fontSize: '2.2rem', fontWeight: 500, letterSpacing: '0.5px', lineHeight: '1.3', marginBottom: '25px' }}>Luxury Real Estate. Curated with a Woman’s Perspective.</motion.h1>
+          <motion.h1 variants={fadeInUp} className="hero-title veda-hero-title">Luxury Real Estate. Curated with a Woman’s Perspective.</motion.h1>
 
-          <motion.ul variants={fadeInUp} className="hero-checklist" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '8px', padding: 0, margin: '0 0 25px 0' }}>
-            <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '1.05rem', fontWeight: 400 }}><CheckCircle2 size={18} color="#b78e58" /> The emotional essence of a home</li>
-            <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '1.05rem', fontWeight: 400 }}><CheckCircle2 size={18} color="#b78e58" /> The finesse of design and detailing</li>
-            <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '1.05rem', fontWeight: 400 }}><CheckCircle2 size={18} color="#b78e58" /> The harmony between aesthetics, comfort, and functionality</li>
+          <motion.ul variants={fadeInUp} className="hero-checklist veda-hero-checklist">
+            <li><CheckCircle2 size={18} color="#b78e58" /> The emotional essence of a home</li>
+            <li><CheckCircle2 size={18} color="#b78e58" /> The finesse of design and detailing</li>
+            <li><CheckCircle2 size={18} color="#b78e58" /> The harmony between aesthetics, comfort, and functionality</li>
           </motion.ul>
 
-          <motion.p variants={fadeInUp} className="hero-price" style={{ fontSize: '1.1rem', fontWeight: 400, margin: '10px 0 25px 0' }}><strong style={{ fontSize: '1.2rem', color: '#fff', fontWeight: 500 }}>Because a home is not merely lived in—it is felt.</strong></motion.p>
+          <motion.p variants={fadeInUp} className="hero-price veda-hero-price"><strong>Because a home is not merely lived in—it is felt.</strong></motion.p>
 
           <motion.div variants={fadeInUp} className="hero-buttons">
             <button style={{ background: '#b72d21ff', color: 'white', padding: '12px 35px', border: 'none', borderRadius: '4px', fontSize: '1rem', cursor: 'pointer', fontWeight: 500, transition: 'background 0.3s' }} onClick={openPopup}>+91-9654212000</button>

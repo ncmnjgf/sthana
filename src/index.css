@@ -78,6 +78,8 @@ a {
   font-size: 2rem;
   font-weight: 600;
   letter-spacing: 1px;
+  flex: 1;
+  cursor: pointer;
 }
 
 .nav-logo-container {
@@ -105,6 +107,14 @@ a {
   display: flex;
   gap: 30px;
   align-items: center;
+  flex: 2;
+  justify-content: center;
+}
+
+.nav-action {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .nav-links a {
@@ -222,6 +232,45 @@ a {
 .hero-price strong {
   color: #ff4d4d;
   font-size: 1.2rem;
+}
+
+.veda-hero-content {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.veda-hero-title {
+  font-size: 2.2rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  line-height: 1.3;
+  margin-bottom: 25px;
+}
+.veda-hero-checklist {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 0;
+  margin: 0 0 25px 0;
+}
+.veda-hero-checklist li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.05rem;
+  font-weight: 400;
+}
+.veda-hero-price {
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin: 10px 0 25px 0;
+}
+.veda-hero-price strong {
+  font-size: 1.2rem;
+  color: #fff;
+  font-weight: 500;
 }
 
 .hero-payment {
@@ -717,16 +766,39 @@ Float WhatsApp .whatsapp-float {
     display: none;
   }
 
+  .nav-action {
+    display: none;
+  }
+
   .navbar {
     justify-content: center;
   }
 
   .nav-brand {
+    flex: none;
     margin: 0 auto;
   }
 
   .hero-container {
     flex-direction: column;
+  }
+  .veda-hero-content {
+    align-items: center;
+    text-align: center;
+  }
+  .veda-hero-title {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+  .veda-hero-checklist {
+    align-items: center;
+  }
+  .veda-hero-checklist li {
+    font-size: 0.95rem;
+  }
+  .veda-hero-price {
+    font-size: 1rem;
+    text-align: center;
   }
 
   .hero-form-box {
