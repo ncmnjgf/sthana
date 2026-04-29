@@ -78,17 +78,16 @@ const Hero = ({ openPopup, handleEmailSubmit }) => {
           variants={staggerContainer}
           style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
         >
-          <motion.h1 variants={fadeInUp} className="hero-title" style={{ fontSize: '2.8rem', fontWeight: 500, letterSpacing: '0.5px' }}>Sthapana Estates in Noida</motion.h1>
-          <motion.h3 variants={fadeInUp} className="hero-subtitle" style={{ fontSize: '1.2rem', fontWeight: 400, marginBottom: '25px', opacity: 0.9 }}>Luxury Real Estate Advisory</motion.h3>
+          <motion.h1 variants={fadeInUp} className="hero-title" style={{ fontSize: '2.8rem', fontWeight: 500, letterSpacing: '0.5px' }}>Discover Luxury Living in Noida’s Finest Addresses</motion.h1>
+          <motion.h3 variants={fadeInUp} className="hero-subtitle" style={{ fontSize: '1.2rem', fontWeight: 400, marginBottom: '25px', opacity: 0.9 }}>Luxury Real Estate. Curated with a Woman’s Perspective.</motion.h3>
 
           <motion.ul variants={fadeInUp} className="hero-checklist" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', padding: 0, margin: '0 0 25px 0' }}>
-            <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '1.05rem', fontWeight: 400 }}><CheckCircle2 size={18} color="#b78e58" /> Income From Day 1</li>
-            <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '1.05rem', fontWeight: 400 }}><CheckCircle2 size={18} color="#b78e58" /> 20+ Years Market Intelligence</li>
-            <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '1.05rem', fontWeight: 400 }}><CheckCircle2 size={18} color="#b78e58" /> Exclusive Properties</li>
-            <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '1.05rem', fontWeight: 400 }}><CheckCircle2 size={18} color="#b78e58" /> Tailored Consultation</li>
+            <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '1.05rem', fontWeight: 400 }}><CheckCircle2 size={18} color="#b78e58" /> The emotional essence of a home</li>
+            <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '1.05rem', fontWeight: 400 }}><CheckCircle2 size={18} color="#b78e58" /> The finesse of design and detailing</li>
+            <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '1.05rem', fontWeight: 400 }}><CheckCircle2 size={18} color="#b78e58" /> The harmony between aesthetics, comfort, and functionality</li>
           </motion.ul>
 
-          <motion.p variants={fadeInUp} className="hero-price" style={{ fontSize: '1.2rem', fontWeight: 500, margin: '10px 0 25px 0' }}>Starting from <strong style={{ fontSize: '1.3rem', color: '#fff', fontWeight: 600 }}>₹ 2.5 Cr onwards*</strong></motion.p>
+          <motion.p variants={fadeInUp} className="hero-price" style={{ fontSize: '1.2rem', fontWeight: 500, margin: '10px 0 25px 0' }}><strong style={{ fontSize: '1.3rem', color: '#fff', fontWeight: 600 }}>Because a home is not merely lived in—it is felt.</strong></motion.p>
 
           <motion.div variants={fadeInUp} className="hero-buttons">
             <button style={{ background: '#b72d21ff', color: 'white', padding: '12px 35px', border: 'none', borderRadius: '4px', fontSize: '1rem', cursor: 'pointer', fontWeight: 500, transition: 'background 0.3s' }} onClick={openPopup}>Download Brochure</button>
@@ -108,6 +107,39 @@ const Hero = ({ openPopup, handleEmailSubmit }) => {
             <input type="tel" name="mobile" className="form-input" placeholder="Mobile Number*" required />
             <button type="submit" className="btn-form-submit">Submit</button>
           </form>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+const OverviewSection = () => {
+  return (
+    <section className="section" style={{ background: '#fff', padding: '60px 0' }}>
+      <div className="container" style={{ textAlign: 'center', maxWidth: '900px' }}>
+        <motion.h2 
+          className="section-title" 
+          style={{ fontSize: '2rem', color: '#d32f2f', marginBottom: '30px', fontWeight: 500 }}
+          initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeInUp}
+        >
+          Overview
+        </motion.h2>
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeInUp}>
+          <p style={{ fontSize: '1.1rem', color: '#555', marginBottom: '20px', lineHeight: '1.8' }}>
+            With over 20 years of expertise, Sthapana Estates brings you the most exclusive luxury residences—carefully curated, transparently advised, and thoughtfully matched to your lifestyle.
+          </p>
+          <h4 style={{ fontSize: '1.3rem', color: '#111', margin: '30px 0 15px', fontWeight: 500, fontStyle: 'italic' }}>
+            Because luxury is not just bought. It is understood.
+          </h4>
+          <p style={{ fontSize: '1.05rem', color: '#555', marginBottom: '15px', lineHeight: '1.8' }}>
+            At Sthapana Estates, luxury real estate is not just a business—it’s a deep-rooted expertise.
+          </p>
+          <p style={{ fontSize: '1.05rem', color: '#555', marginBottom: '15px', lineHeight: '1.8' }}>
+            With 20+ years of experience in Noida’s most prestigious residential markets, we possess an intimate understanding of every subtlety—be it location dynamics, architectural value, developer credibility, or long-term investment potential.
+          </p>
+          <p style={{ fontSize: '1.05rem', color: '#555', marginBottom: '20px', lineHeight: '1.8' }}>
+            Our journey has been closely aligned with iconic developments such as Gulshan Dynasty, where we have advised discerning clients from its inception through to its current stature in the luxury segment.
+          </p>
         </motion.div>
       </div>
     </section>
@@ -136,21 +168,42 @@ const FounderSection = () => {
   );
 };
 
-const Amenities = ({ openPopup }) => {
+const ExpertiseSection = () => {
   return (
-    <section id="amenities" className="section">
-      <motion.div
-        className="container"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={fadeInUp}
-      >
-        <h2 className="section-title">Live your luxury life with Sthapana</h2>
-        <button className="btn-outline-white" style={{ background: '#d32f2f', border: 'none' }} onClick={openPopup}>
-          Get Floor Plan - Download Brochure
-        </button>
-      </motion.div>
+    <section id="amenities" className="section" style={{ background: '#fdfaf6', padding: '60px 0' }}>
+      <div className="container">
+        <motion.h2
+          className="section-title"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.8 }}
+          variants={fadeInUp}
+        >
+          Our Expertise: What Sets Us Apart
+        </motion.h2>
+        <motion.div
+           initial="hidden"
+           whileInView="visible"
+           viewport={{ once: true, amount: 0.3 }}
+           variants={staggerContainer}
+           style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'left' }}
+        >
+          <ul style={{ listStyle: 'none', padding: 0 }}>
+            {[
+              "20+ Years of Expertise in Noida Luxury Market",
+              "Deep understanding of micro-markets & investment trends",
+              "Access to exclusive inventory & premium projects",
+              "Personalized consultation based on lifestyle & preferences",
+              "Strong track record in luxury resale & rental advisory"
+            ].map((text, idx) => (
+               <motion.li key={idx} variants={fadeInUp} style={{ display: 'flex', alignItems: 'flex-start', gap: '15px', fontSize: '1.1rem', color: '#333', marginBottom: '20px' }}>
+                 <CheckCircle2 color="#d32f2f" size={24} style={{ flexShrink: 0, marginTop: '2px' }} />
+                 <span>{text}</span>
+               </motion.li>
+            ))}
+          </ul>
+        </motion.div>
+      </div>
     </section>
   );
 };
@@ -194,10 +247,10 @@ const Gallery = () => {
 
 const Portfolio = ({ openPopup }) => {
   const projects = [
-    { name: "Gulshan Dynasty", desc: "Sector 144, Noida" },
-    { name: "Max Estate 105", desc: "Modern design & lifestyle" },
-    { name: "ACE Terra", desc: "Yamuna Expy" },
-    { name: "Eldeco EOE", desc: "Premium specifications" }
+    { name: "Gulshan Dynasty", desc: "Ultra-luxury residences in Sector 144, Noida", features: ["Resale & Rental Opportunities Available", "Ready premium living experience"] },
+    { name: "Max Estate 105", desc: "A new benchmark in luxury living", features: ["Modern design & curated lifestyle", "Premium connectivity & location advantage"] },
+    { name: "ACE Terra", desc: "Upcoming premium development on Yamuna Expressway", features: ["High growth corridor", "Ideal for future-ready investments"] },
+    { name: "Eldeco EOE", desc: "Luxury living with trusted legacy", features: ["Premium specifications", "Strategic location near upcoming infrastructure"] }
   ];
 
   return (
@@ -210,7 +263,7 @@ const Portfolio = ({ openPopup }) => {
           viewport={{ once: true, amount: 0.8 }}
           variants={fadeInUp}
         >
-          Available Floor Plan
+          Featured Luxury Opportunities
         </motion.h2>
         <motion.div
           className="cards-grid"
@@ -220,9 +273,16 @@ const Portfolio = ({ openPopup }) => {
           variants={staggerContainer}
         >
           {projects.map((proj, idx) => (
-            <motion.div key={idx} variants={fadeInUp} className="portfolio-card">
-              <h3 className="portfolio-title">{proj.name}</h3>
-              <p className="portfolio-desc">{proj.desc}</p>
+            <motion.div key={idx} variants={fadeInUp} className="portfolio-card" style={{ display: 'flex', flexDirection: 'column' }}>
+              <h3 className="portfolio-title" style={{ marginBottom: '10px' }}>{proj.name}</h3>
+              <p className="portfolio-desc" style={{ marginBottom: '15px', fontWeight: '500', color: '#d32f2f' }}>{proj.desc}</p>
+              <ul style={{ listStyle: 'none', padding: 0, textAlign: 'left', marginTop: 'auto' }}>
+                {proj.features.map((feature, fIdx) => (
+                  <li key={fIdx} style={{ fontSize: '0.95rem', color: '#555', marginBottom: '10px', display: 'flex', gap: '8px' }}>
+                    <CheckCircle2 size={16} color="#d32f2f" style={{ flexShrink: 0, marginTop: '3px' }} /> {feature}
+                  </li>
+                ))}
+              </ul>
             </motion.div>
           ))}
         </motion.div>
@@ -288,20 +348,86 @@ const LocationAdvantage = () => {
           >
             <ul>
               {[
-                { bold: "Proximity to Headquarters", text: "and key commercial attractions." },
-                { bold: "Close to Noida Expressway", text: "— seamless access for national and international visitors." },
-                { bold: "Well-connected by road and rail", text: ", ensuring smooth transit." },
-                { bold: "", text: "Growing tourism, infrastructure, and hospitality ecosystem in Noida." },
-                { bold: "", text: "Surging demand for premium accommodation and private retreats." }
+                { bold: "Situated within Gulshan One29 on Noida Expressway,", text: "we are seamlessly connected to the region’s most prestigious luxury projects. This vantage point enables us to offer clients:" },
+                { bold: "", text: "A comprehensive understanding of the current market dynamics." },
+                { bold: "", text: "First-hand insight into micro-location advantages." },
+                { bold: "", text: "Clear perspective on the future growth potential of the corridor." },
+                { bold: "", text: "Real-time knowledge of inventory, pricing, and investment trends." },
+                { bold: "", text: "When you visit us, you don’t just explore properties—you experience the location, the ecosystem, and its future firsthand." }
               ].map((item, idx) => (
                 <motion.li key={idx} variants={fadeInUp}>
-                  <CheckCircle2 color="#d32f2f" />
-                  <span>{item.bold ? <strong>{item.bold} </strong> : ""}{item.text}</span>
+                  <CheckCircle2 color="#d32f2f" style={{ flexShrink: 0, marginTop: '4px' }} />
+                  <span style={{ lineHeight: '1.5' }}>{item.bold ? <strong>{item.bold} </strong> : ""}{item.text}</span>
                 </motion.li>
               ))}
             </ul>
           </motion.div>
         </div>
+      </div>
+    </section>
+  );
+};
+
+const ServicesSection = () => {
+  return (
+    <section id="services" className="section" style={{ background: '#fff', padding: '60px 0' }}>
+      <div className="container">
+        <motion.h2
+          className="section-title"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.8 }}
+          variants={fadeInUp}
+        >
+          Our Services
+        </motion.h2>
+        <motion.div
+           initial="hidden"
+           whileInView="visible"
+           viewport={{ once: true, amount: 0.3 }}
+           variants={staggerContainer}
+           style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'left' }}
+        >
+          <ul style={{ listStyle: 'none', padding: 0 }}>
+            {[
+              "Bespoke Luxury Property Advisory",
+              "Curated Resale & Leasing Solutions",
+              "Strategic Investment Consultation",
+              "Comparative Project Evaluation",
+              "End-to-End Transaction Management"
+            ].map((text, idx) => (
+               <motion.li key={idx} variants={fadeInUp} style={{ display: 'flex', alignItems: 'flex-start', gap: '15px', fontSize: '1.1rem', color: '#333', marginBottom: '20px' }}>
+                 <CheckCircle2 color="#d32f2f" size={24} style={{ flexShrink: 0, marginTop: '2px' }} />
+                 <span>{text}</span>
+               </motion.li>
+            ))}
+          </ul>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+const WhyUsSection = () => {
+  return (
+    <section className="section" style={{ background: '#fdfaf6', padding: '60px 0' }}>
+      <div className="container" style={{ textAlign: 'center', maxWidth: '800px' }}>
+        <motion.h2 
+          className="section-title"
+          initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}
+        >
+          Why Sthapana Estates
+        </motion.h2>
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
+          <h4 style={{ fontSize: '1.4rem', color: '#111', margin: '20px 0', fontWeight: 500, lineHeight: '1.6' }}>
+            Because we believe luxury is deeply personal—<br/>
+            and every home must be a reflection of who you are.
+          </h4>
+          <h3 style={{ fontSize: '1.8rem', color: '#d32f2f', margin: '30px 0', fontWeight: 600, fontStyle: 'italic' }}>
+            We don’t just present options.<br/>
+            We curate possibilities.
+          </h3>
+        </motion.div>
       </div>
     </section>
   );
@@ -317,8 +443,12 @@ const Consultation = ({ handleEmailSubmit }) => {
         viewport={{ once: true, amount: 0.3 }}
         variants={fadeInUp}
       >
-        <h2 className="section-title">Flexible Payment Plan</h2>
-        <p className="consultation-subtitle">Receive Invitation For Private Viewing</p>
+        <h2 className="section-title">Begin Your Journey to Refined Living</h2>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '30px' }}>
+          <p className="consultation-subtitle" style={{ marginBottom: '10px', fontSize: '1.1rem' }}>📞 Connect with our advisors</p>
+          <p className="consultation-subtitle" style={{ marginBottom: '10px', fontSize: '1.1rem' }}>📍 Private consultations, by appointment</p>
+          <p className="consultation-subtitle" style={{ fontSize: '1.2rem', color: '#b78e58', marginTop: '15px', fontStyle: 'italic' }}>Allow us to introduce you to a home that feels inherently yours.</p>
+        </div>
 
         <form className="consultation-form" onSubmit={handleEmailSubmit}>
           <div style={{ display: 'flex', gap: '15px', marginBottom: '15px' }}>
@@ -447,8 +577,10 @@ const CookiePolicy = () => (
 const Footer = ({ setView, openPopup }) => {
   return (
     <footer className="footer">
-      <div className="footer-text">
-        © 2026 Sthapana Estates. All Rights Reserved.
+      <div className="footer-text" style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+        <span style={{ fontSize: '1.4rem', fontWeight: '500' }}>Sthapana Estates</span>
+        <span style={{ fontStyle: 'italic', color: '#b78e58', fontSize: '1.1rem' }}>Where Luxury Meets Understanding.</span>
+        <span style={{ fontSize: '0.9rem', opacity: 0.7, marginTop: '8px' }}>© 2026 Sthapana Estates. All Rights Reserved.</span>
       </div>
       <div className="footer-links">
         <a href="#about" onClick={(e) => { e.preventDefault(); setView('about'); window.scrollTo(0, 0); }}>About</a>
@@ -516,11 +648,14 @@ function App() {
       {view === 'home' && (
         <>
           <Hero openPopup={openPopup} handleEmailSubmit={handleEmailSubmit} />
+          <OverviewSection />
           <FounderSection />
-          <Amenities openPopup={openPopup} />
+          <ExpertiseSection />
           <Gallery />
           <Portfolio openPopup={openPopup} />
+          <ServicesSection />
           <LocationAdvantage />
+          <WhyUsSection />
           <Consultation handleEmailSubmit={handleEmailSubmit} />
         </>
       )}
