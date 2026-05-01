@@ -96,27 +96,7 @@ const Hero = ({ openPopup, handleEmailSubmit }) => {
           </motion.div>
         </motion.div>
 
-        <motion.div
-          className="hero-form-box"
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-        >
-          <div className="form-box-title">ENQUIRE NOW</div>
-          <form onSubmit={handleEmailSubmit}>
-            <input type="text" name="name" className="form-input" placeholder="Name*" required />
-            <input type="email" name="email" className="form-input" placeholder="Email*" required />
-            <input type="tel" name="mobile" className="form-input" placeholder="Mobile Number*" required />
-            <select name="project" className="form-input" defaultValue="">
-              <option value="" disabled>Select Property of Interest</option>
-              <option value="Gulshan Dynasty">Gulshan Dynasty</option>
-              <option value="Max Estate 105">Max Estate 105</option>
-              <option value="ACE Terra">ACE Terra</option>
-              <option value="Eldeco EOE">Eldeco EOE</option>
-            </select>
-            <button type="submit" className="btn-form-submit">Submit</button>
-          </form>
-        </motion.div>
+
       </div>
     </section>
   );
@@ -175,7 +155,17 @@ const AmenitiesGrid = ({ openPopup }) => {
       <div className="container" style={{ position: 'relative', zIndex: 1, padding: '80px 0 120px', textAlign: 'center' }}>
         <motion.h2 
           className="section-title" 
-          style={{ color: 'white', marginBottom: '50px', fontSize: '2.5rem', fontWeight: 500 }}
+          style={{ 
+            color: 'white', 
+            marginBottom: '50px', 
+            fontSize: '2.5rem', 
+            fontWeight: 500,
+            background: 'rgba(0, 0, 0, 0.4)',
+            padding: '15px 40px',
+            borderRadius: '12px',
+            display: 'inline-block',
+            letterSpacing: '1px'
+          }}
           initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.8 }} variants={fadeInUp}
         >
           Live your luxury life with Sthapana
