@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle2, Smartphone, Users, Utensils, Leaf, Sparkles, Waves, Dumbbell } from 'lucide-react';
+import { CheckCircle2, Smartphone, Users, Utensils, Leaf, Sparkles, Waves, Dumbbell, Briefcase, Key, TrendingUp, BarChart, ClipboardCheck } from 'lucide-react';
 import './index.css';
 
 // Animation Variables
@@ -81,7 +81,9 @@ const Hero = ({ openPopup, handleEmailSubmit }) => {
           animate="visible"
           variants={staggerContainer}
         >
-          <motion.h1 variants={fadeInUp} className="hero-title veda-hero-title">Luxury Real Estate. Curated with a Woman’s Perspective.</motion.h1>
+          <motion.h1 variants={fadeInUp} className="hero-title veda-hero-title">Discover Luxury Living in Noida's Finest Addresses with Sthapana's Expert Consultancy</motion.h1>
+
+          <motion.p variants={fadeInUp} className="hero-subtitle">We bring</motion.p>
 
           <motion.ul variants={fadeInUp} className="hero-checklist veda-hero-checklist">
             <li><CheckCircle2 size={18} color="#b78e58" /> The emotional essence of a home</li>
@@ -139,12 +141,11 @@ const OverviewSection = () => {
 
 const AmenitiesGrid = ({ openPopup }) => {
   const amenities = [
-    { name: "Multipurpose Hall", icon: <Users size={38} strokeWidth={1.5} /> },
-    { name: "Dining Restaurants", icon: <Utensils size={38} strokeWidth={1.5} /> },
-    { name: "Yoga", icon: <Leaf size={38} strokeWidth={1.5} /> },
-    { name: "Spa", icon: <Sparkles size={38} strokeWidth={1.5} /> },
-    { name: "Rooftop Pool", icon: <Waves size={38} strokeWidth={1.5} /> },
-    { name: "Gymnasium", icon: <Dumbbell size={38} strokeWidth={1.5} /> }
+    { name: "Bespoke Luxury Property Advisory", icon: <Briefcase size={38} strokeWidth={1.5} /> },
+    { name: "Curated Resale & Leasing Solutions", icon: <Key size={38} strokeWidth={1.5} /> },
+    { name: "Strategic Investment Consultation", icon: <TrendingUp size={38} strokeWidth={1.5} /> },
+    { name: "Comparative Project Evaluation", icon: <BarChart size={38} strokeWidth={1.5} /> },
+    { name: "End-to-End Transaction Management", icon: <ClipboardCheck size={38} strokeWidth={1.5} /> }
   ];
 
   return (
@@ -168,7 +169,7 @@ const AmenitiesGrid = ({ openPopup }) => {
           }}
           initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.8 }} variants={fadeInUp}
         >
-          Live your luxury life with Sthapana
+          Our Services
         </motion.h2>
         
         <motion.div 
@@ -244,9 +245,10 @@ const ExpertiseSection = () => {
 
 const Gallery = () => {
   const images = [
-    "/assets/img1.jpg",
-    "/assets/im2.jpg",
-    "/assets/img3.jpg"
+    "/assets/AceTerace.jpg",
+    "/assets/Eldeco EOE.jpg",
+    "/assets/maxImage.jpg",
+    "/assets/noida_driver_way.jpg"
   ];
   return (
     <section id="gallery" className="gallery-section">
@@ -281,10 +283,11 @@ const Gallery = () => {
 
 const Portfolio = ({ openPopup }) => {
   const projects = [
-    { name: "Gulshan Dynasty", desc: "Ultra-luxury residences in Sector 144, Noida", features: ["Resale & Rental Opportunities Available", "Ready premium living experience"] },
-    { name: "Max Estate 105", desc: "A new benchmark in luxury living", features: ["Modern design & curated lifestyle", "Premium connectivity & location advantage"] },
-    { name: "ACE Terra", desc: "Upcoming premium development on Yamuna Expressway", features: ["High growth corridor", "Ideal for future-ready investments"] },
-    { name: "Eldeco EOE", desc: "Luxury living with trusted legacy", features: ["Premium specifications", "Strategic location near upcoming infrastructure"] }
+    { name: "Gulshan Dynasty", desc: "Ultra-luxury residences in Sector 144, Noida", features: ["Resale & Rental Opportunities Available", "Ready premium living experience"], image: "/assets/noida_driver_way.jpg" },
+    { name: "Gulshan Empire", desc: "Premium living at Wave City, Ghaziabad", features: ["Exclusive lifestyle", "Strategic investment opportunity"], image: "/assets/im2.jpg" },
+    { name: "Max Estate 105", desc: "A new benchmark in luxury living", features: ["Modern design & curated lifestyle", "Premium connectivity & location advantage"], image: "/assets/maxImage.jpg" },
+    { name: "ACE Terra", desc: "Upcoming premium development on Yamuna Expressway", features: ["High growth corridor", "Ideal for future-ready investments"], image: "/assets/AceTerace.jpg" },
+    { name: "Eldeco EOE", desc: "Luxury living with trusted legacy", features: ["Premium specifications", "Strategic location near upcoming infrastructure"], image: "/assets/Eldeco EOE.jpg" }
   ];
 
   return (
@@ -307,16 +310,21 @@ const Portfolio = ({ openPopup }) => {
           variants={staggerContainer}
         >
           {projects.map((proj, idx) => (
-            <motion.div key={idx} variants={fadeInUp} className="portfolio-card" style={{ display: 'flex', flexDirection: 'column' }} onClick={() => openPopup(proj.name)}>
-              <h3 className="portfolio-title" style={{ marginBottom: '10px' }}>{proj.name}</h3>
-              <p className="portfolio-desc" style={{ marginBottom: '15px', fontWeight: '500', color: '#d32f2f' }}>{proj.desc}</p>
-              <ul style={{ listStyle: 'none', padding: 0, textAlign: 'left', marginTop: 'auto' }}>
-                {proj.features.map((feature, fIdx) => (
-                  <li key={fIdx} style={{ fontSize: '0.95rem', color: '#555', marginBottom: '10px', display: 'flex', gap: '8px' }}>
-                    <CheckCircle2 size={16} color="#d32f2f" style={{ flexShrink: 0, marginTop: '3px' }} /> {feature}
-                  </li>
-                ))}
-              </ul>
+            <motion.div key={idx} variants={fadeInUp} className="portfolio-card" style={{ display: 'flex', flexDirection: 'column', padding: 0, overflow: 'hidden' }} onClick={() => openPopup(proj.name)}>
+              <div style={{ height: '220px', width: '100%', overflow: 'hidden' }}>
+                <img src={proj.image} alt={proj.name} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.4s ease' }} onMouseOver={e => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'} />
+              </div>
+              <div style={{ padding: '30px 20px', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+                <h3 className="portfolio-title" style={{ marginBottom: '10px' }}>{proj.name}</h3>
+                <p className="portfolio-desc" style={{ marginBottom: '15px', fontWeight: '500', color: '#d32f2f' }}>{proj.desc}</p>
+                <ul style={{ listStyle: 'none', padding: 0, textAlign: 'left', marginTop: 'auto' }}>
+                  {proj.features.map((feature, fIdx) => (
+                    <li key={fIdx} style={{ fontSize: '0.95rem', color: '#555', marginBottom: '10px', display: 'flex', gap: '8px' }}>
+                      <CheckCircle2 size={16} color="#d32f2f" style={{ flexShrink: 0, marginTop: '3px' }} /> {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </motion.div>
           ))}
         </motion.div>
@@ -402,45 +410,6 @@ const LocationAdvantage = () => {
   );
 };
 
-const ServicesSection = () => {
-  return (
-    <section id="services" className="section" style={{ background: '#fff', padding: '60px 0' }}>
-      <div className="container">
-        <motion.h2
-          className="section-title"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.8 }}
-          variants={fadeInUp}
-        >
-          Our Services
-        </motion.h2>
-        <motion.div
-           initial="hidden"
-           whileInView="visible"
-           viewport={{ once: true, amount: 0.3 }}
-           variants={staggerContainer}
-           style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'left' }}
-        >
-          <ul style={{ listStyle: 'none', padding: 0 }}>
-            {[
-              "Bespoke Luxury Property Advisory",
-              "Curated Resale & Leasing Solutions",
-              "Strategic Investment Consultation",
-              "Comparative Project Evaluation",
-              "End-to-End Transaction Management"
-            ].map((text, idx) => (
-               <motion.li key={idx} variants={fadeInUp} style={{ display: 'flex', alignItems: 'flex-start', gap: '15px', fontSize: '1.1rem', color: '#333', marginBottom: '20px' }}>
-                 <CheckCircle2 color="#d32f2f" size={24} style={{ flexShrink: 0, marginTop: '2px' }} />
-                 <span>{text}</span>
-               </motion.li>
-            ))}
-          </ul>
-        </motion.div>
-      </div>
-    </section>
-  );
-};
 
 const WhyUsSection = () => {
   return (
@@ -493,6 +462,7 @@ const Consultation = ({ handleEmailSubmit }) => {
           <select name="project" className="form-input" defaultValue="">
             <option value="" disabled>Select Property of Interest (Optional)</option>
             <option value="Gulshan Dynasty">Gulshan Dynasty</option>
+            <option value="Gulshan Empire">Gulshan Empire</option>
             <option value="Max Estate 105">Max Estate 105</option>
             <option value="ACE Terra">ACE Terra</option>
             <option value="Eldeco EOE">Eldeco EOE</option>
@@ -541,6 +511,7 @@ const WelcomePopup = ({ isOpen, setIsOpen, handleEmailSubmit, defaultProject }) 
               <select name="project" className="form-input" defaultValue={defaultProject || ""}>
                 <option value="" disabled>Select Property of Interest (Optional)</option>
                 <option value="Gulshan Dynasty">Gulshan Dynasty</option>
+                <option value="Gulshan Empire">Gulshan Empire</option>
                 <option value="Max Estate 105">Max Estate 105</option>
                 <option value="ACE Terra">ACE Terra</option>
                 <option value="Eldeco EOE">Eldeco EOE</option>
@@ -664,6 +635,20 @@ const MobileBottomBar = () => {
   );
 };
 
+const ThankYou = ({ setView }) => (
+  <div className="page-section" style={{ minHeight: '60vh', paddingBottom: '60px', display: 'flex', flexDirection: 'column' }}>
+    <PageHeader title="Thank You!" />
+    <div style={{ padding: '0 20px', maxWidth: '800px', margin: '60px auto', textAlign: 'center', lineHeight: '1.8' }}>
+      <CheckCircle2 color="#25d366" size={80} style={{ marginBottom: '20px' }} />
+      <h2 style={{ color: '#d32f2f', marginBottom: '20px', fontSize: '2rem' }}>Submitted Successfully</h2>
+      <p style={{ fontSize: '1.1rem', marginBottom: '40px', color: '#555' }}>
+        Thank you for your enquiry. Our luxury real estate advisors will review your request and get back to you shortly.
+      </p>
+      <button className="btn-submit-brown" onClick={() => { setView('home'); window.scrollTo(0, 0); }} style={{ padding: '12px 35px' }}>Return to Home</button>
+    </div>
+  </div>
+);
+
 function App() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState("");
@@ -674,7 +659,7 @@ function App() {
     setIsPopupOpen(true);
   };
 
-  const handleEmailSubmit = (e) => {
+  const handleEmailSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
     let name = "", email = "", mobile = "", message = "", project = "";
@@ -688,10 +673,38 @@ function App() {
       else if (input.tagName.toLowerCase() === 'textarea') message = input.value;
     });
 
-    const subject = encodeURIComponent("New Enquiry from Sthapana Estates");
-    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nMobile: ${mobile}${project ? `\nInterested In: ${project}` : ""}${message ? `\nMessage: ${message}` : ""}`);
-    window.location.href = `mailto:Info@sthapanaestates.com?subject=${subject}&body=${body}`;
-    form.reset();
+    const formData = new FormData();
+    formData.append("access_key", "0d0fea9c-7321-4d83-b1df-62a8928ae737");
+    formData.append("Name", name);
+    formData.append("Email", email);
+    formData.append("Mobile", mobile);
+    if (project) formData.append("Interested In", project);
+    if (message) formData.append("Message", message);
+    
+    formData.append("subject", "New Enquiry from Sthapana Estates Website");
+    formData.append("from_name", "Sthapana Estates");
+
+    // Optional: Update UI to show loading state here if needed
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+      const data = await response.json();
+      
+      if (data.success) {
+        form.reset();
+        setView('thank-you');
+        window.scrollTo(0, 0);
+      } else {
+        console.error("Submission failed: ", data);
+        alert("Submission failed. Please try again later.");
+      }
+    } catch (error) {
+      console.error("Error submitting form: ", error);
+      alert("Something went wrong. Please check your connection and try again.");
+    }
   };
 
   return (
@@ -706,7 +719,7 @@ function App() {
           <ExpertiseSection />
           <AmenitiesGrid openPopup={openPopup} />
           <Portfolio openPopup={openPopup} />
-          <ServicesSection />
+
           <WhyUsSection />
           <LocationAdvantage />
           <Gallery />
@@ -717,6 +730,7 @@ function App() {
       {view === 'about' && <AboutUs />}
       {view === 'privacy' && <PrivacyPolicy />}
       {view === 'cookies' && <CookiePolicy />}
+      {view === 'thank-you' && <ThankYou setView={setView} />}
 
       <Footer setView={setView} openPopup={openPopup} />
       <MobileBottomBar />
