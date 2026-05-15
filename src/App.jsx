@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle2, Smartphone, Users, Utensils, Leaf, Sparkles, Waves, Dumbbell, Briefcase, Key, TrendingUp, BarChart, ClipboardCheck } from 'lucide-react';
+import { CheckCircle2, Smartphone, Users, Utensils, Leaf, Sparkles, Waves, Dumbbell, Briefcase, Key, TrendingUp, BarChart, ClipboardCheck, Menu, X } from 'lucide-react';
 import './index.css';
 
 // Animation Variables
@@ -21,6 +21,7 @@ const staggerContainer = {
 
 const Navbar = ({ setView }) => {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,27 +43,34 @@ const Navbar = ({ setView }) => {
 
   return (
     <nav className="navbar" style={{ 
-      background: 'rgba(255, 255, 255, 0.6)',
-      backdropFilter: 'blur(5px)',
+      background: 'rgba(255, 255, 255, 0.95)',
+      backdropFilter: 'blur(10px)',
       boxShadow: '0 2px 10px rgba(0, 0, 0, 0.05)',
       transition: 'all 0.4s ease',
       borderBottom: '1px solid rgba(255, 255, 255, 0.2)'
     }}>
-      <div className="nav-brand" onClick={() => { if(setView) { setView('home'); window.scrollTo(0,0); } }}>
+      <div className="nav-brand" onClick={() => { if(setView) { setView('home'); window.scrollTo(0,0); } setMobileMenuOpen(false); }}>
         <div className="nav-logo-container">
           <img src="/logos.png" alt="Sthapana Estates" className="nav-logo" />
         </div>
       </div>
-      <div className="nav-links">
-        <a href="#overview" onClick={(e) => handleLinkClick(e, 'overview')}>Overview</a>
-        <a href="#amenities" onClick={(e) => handleLinkClick(e, 'amenities')}>Amenities</a>
-        <a href="#gallery" onClick={(e) => handleLinkClick(e, 'gallery')}>Gallery</a>
-        <a href="#floor-plan" onClick={(e) => handleLinkClick(e, 'floor-plan')}>Floor Plan</a>
-        <a href="#location" onClick={(e) => handleLinkClick(e, 'location')}>Location Advantage</a>
-        <a href="#contact" onClick={(e) => handleLinkClick(e, 'contact')}>Contact Us</a>
+
+      <div className="mobile-menu-toggle" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+        {mobileMenuOpen ? <X size={28} color="#1e3a8a" /> : <Menu size={28} color="#1e3a8a" />}
+      </div>
+
+      <div className={`nav-links ${mobileMenuOpen ? 'active' : ''}`}>
+        <a href="#overview" onClick={(e) => { handleLinkClick(e, 'overview'); setMobileMenuOpen(false); }}>Overview</a>
+        <a href="#amenities" onClick={(e) => { handleLinkClick(e, 'amenities'); setMobileMenuOpen(false); }}>Amenities</a>
+        <a href="#gallery" onClick={(e) => { handleLinkClick(e, 'gallery'); setMobileMenuOpen(false); }}>Gallery</a>
+        <a href="#floor-plan" onClick={(e) => { handleLinkClick(e, 'floor-plan'); setMobileMenuOpen(false); }}>Floor Plan</a>
+        <a href="#location" onClick={(e) => { handleLinkClick(e, 'location'); setMobileMenuOpen(false); }}>Location Advantage</a>
+        <a href="#privacy" onClick={(e) => { e.preventDefault(); if(setView) { setView('privacy'); window.scrollTo(0,0); } setMobileMenuOpen(false); }}>Privacy Policy</a>
+        <a href="#contact" onClick={(e) => { handleLinkClick(e, 'contact'); setMobileMenuOpen(false); }}>Contact Us</a>
+        <a href="tel:+91-9654212000" className="btn-nav-phone mobile-only-nav-action" style={{ textDecoration: 'none', background: '#d32f2f', borderRadius: '4px', padding: '10px 24px', color: 'white', fontWeight: 500, transition: 'all 0.3s', display: 'none' }}>+91-9654212000</a>
       </div>
       <div className="nav-action">
-        <a href="tel:+91-9654212000" className="btn-nav-phone" style={{ textDecoration: 'none', background: '#d84c19ff', borderRadius: '4px', padding: '10px 24px', color: 'white', fontWeight: 500, transition: 'all 0.3s' }}>+91-9654212000</a>
+        <a href="tel:+91-9654212000" className="btn-nav-phone desktop-action-btn" style={{ textDecoration: 'none', background: '#d32f2f', borderRadius: '4px', padding: '10px 24px', color: 'white', fontWeight: 500, transition: 'all 0.3s' }}>+91-9654212000</a>
       </div>
     </nav>
   );
@@ -94,7 +102,7 @@ const Hero = ({ openPopup, handleEmailSubmit }) => {
           <motion.p variants={fadeInUp} className="hero-price veda-hero-price"><strong>Because a home is not merely lived in—it is felt.</strong></motion.p>
 
           <motion.div variants={fadeInUp} className="hero-buttons">
-            <button style={{ background: '#b72d21ff', color: 'white', padding: '12px 35px', border: 'none', borderRadius: '4px', fontSize: '1rem', cursor: 'pointer', fontWeight: 500, transition: 'background 0.3s' }} onClick={openPopup}>+91-9654212000</button>
+            <button style={{ background: '#d32f2f', color: 'white', padding: '12px 35px', border: 'none', borderRadius: '4px', fontSize: '1rem', cursor: 'pointer', fontWeight: 500, transition: 'background 0.3s' }} onClick={openPopup}>Enquire Now</button>
           </motion.div>
         </motion.div>
 
@@ -110,25 +118,25 @@ const OverviewSection = () => {
       <div className="container" style={{ textAlign: 'center', maxWidth: '900px' }}>
         <motion.h2 
           className="section-title" 
-          style={{ fontSize: '2rem', color: '#d32f2f', marginBottom: '30px', fontWeight: 500 }}
+          style={{ fontSize: '2rem', color: '#1e3a8a', marginBottom: '30px', fontWeight: 500 }}
           initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeInUp}
         >
           Overview
         </motion.h2>
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeInUp}>
-          <p style={{ fontSize: '1.1rem', color: '#555', marginBottom: '20px', lineHeight: '1.8' }}>
+          <p style={{ fontSize: '1.1rem', color: '#111', marginBottom: '20px', lineHeight: '1.8' }}>
             With over 20 years of expertise, Sthapana Estates brings you the most exclusive luxury residences—carefully curated, transparently advised, and thoughtfully matched to your lifestyle.
           </p>
           <h4 style={{ fontSize: '1.3rem', color: '#111', margin: '30px 0 15px', fontWeight: 500, fontStyle: 'italic' }}>
             Because luxury is not just bought. It is understood.
           </h4>
-          <p style={{ fontSize: '1.05rem', color: '#555', marginBottom: '15px', lineHeight: '1.8' }}>
+          <p style={{ fontSize: '1.05rem', color: '#111', marginBottom: '15px', lineHeight: '1.8' }}>
             At Sthapana Estates, luxury real estate is not just a business—it’s a deep-rooted expertise.
           </p>
-          <p style={{ fontSize: '1.05rem', color: '#555', marginBottom: '15px', lineHeight: '1.8' }}>
+          <p style={{ fontSize: '1.05rem', color: '#111', marginBottom: '15px', lineHeight: '1.8' }}>
             With 20+ years of experience in Noida’s most prestigious residential markets, we possess an intimate understanding of every subtlety—be it location dynamics, architectural value, developer credibility, or long-term investment potential.
           </p>
-          <p style={{ fontSize: '1.05rem', color: '#555', marginBottom: '20px', lineHeight: '1.8' }}>
+          <p style={{ fontSize: '1.05rem', color: '#111', marginBottom: '20px', lineHeight: '1.8' }}>
             Our journey has been closely aligned with iconic developments such as Gulshan Dynasty, where we have advised discerning clients from its inception through to its current stature in the luxury segment.
           </p>
         </motion.div>
@@ -316,10 +324,10 @@ const Portfolio = ({ openPopup }) => {
               </div>
               <div style={{ padding: '30px 20px', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
                 <h3 className="portfolio-title" style={{ marginBottom: '10px' }}>{proj.name}</h3>
-                <p className="portfolio-desc" style={{ marginBottom: '15px', fontWeight: '500', color: '#d32f2f' }}>{proj.desc}</p>
+                <p className="portfolio-desc" style={{ marginBottom: '15px', fontWeight: '500', color: '#111' }}>{proj.desc}</p>
                 <ul style={{ listStyle: 'none', padding: 0, textAlign: 'left', marginTop: 'auto' }}>
                   {proj.features.map((feature, fIdx) => (
-                    <li key={fIdx} style={{ fontSize: '0.95rem', color: '#555', marginBottom: '10px', display: 'flex', gap: '8px' }}>
+                    <li key={fIdx} style={{ fontSize: '0.95rem', color: '#111', marginBottom: '10px', display: 'flex', gap: '8px' }}>
                       <CheckCircle2 size={16} color="#d32f2f" style={{ flexShrink: 0, marginTop: '3px' }} /> {feature}
                     </li>
                   ))}
@@ -329,7 +337,8 @@ const Portfolio = ({ openPopup }) => {
           ))}
         </motion.div>
         <motion.button
-          className="btn-black"
+          className="btn-submit-brown"
+          style={{ padding: '12px 40px', fontSize: '1.05rem', margin: '0 auto', display: 'block' }}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -422,11 +431,11 @@ const WhyUsSection = () => {
           Why Sthapana Estates
         </motion.h2>
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
-          <h4 style={{ fontSize: '1.4rem', color: '#111', margin: '20px 0', fontWeight: 500, lineHeight: '1.6' }}>
+          <h4 style={{ fontSize: '1.4rem', color: '#1e3a8a', margin: '20px 0', fontWeight: 500, lineHeight: '1.6' }}>
             Because we believe luxury is deeply personal—<br/>
             and every home must be a reflection of who you are.
           </h4>
-          <h3 style={{ fontSize: '1.8rem', color: '#d32f2f', margin: '30px 0', fontWeight: 600, fontStyle: 'italic' }}>
+          <h3 style={{ fontSize: '1.8rem', color: '#1e3a8a', margin: '30px 0', fontWeight: 600, fontStyle: 'italic' }}>
             We don’t just present options.<br/>
             We curate possibilities.
           </h3>
@@ -526,8 +535,8 @@ const WelcomePopup = ({ isOpen, setIsOpen, handleEmailSubmit, defaultProject }) 
 };
 
 const PageHeader = ({ title }) => (
-  <div style={{ background: '#d32f2f', color: 'white', padding: '40px 20px', textAlign: 'center', marginTop: '70px' }}>
-    <h1 style={{ margin: 0, fontSize: '2.5rem' }}>{title}</h1>
+  <div className="page-header-bg">
+    <h1 className="page-header-title">{title}</h1>
   </div>
 );
 
@@ -535,7 +544,7 @@ const AboutUs = () => (
   <div className="page-section" style={{ minHeight: '60vh', paddingBottom: '60px' }}>
     <PageHeader title="About Us" />
     <div style={{ padding: '0 20px', maxWidth: '1000px', margin: '40px auto 0', lineHeight: '1.8' }}>
-      <h2 style={{ color: '#d32f2f', marginBottom: '20px' }}>Sthapana Estates in Noida</h2>
+      <h2 style={{ color: '#1e3a8a', marginBottom: '20px' }}>Sthapana Estates in Noida</h2>
       <h4 style={{ marginBottom: '20px' }}>Where Luxury Meets Reliability</h4>
       <p style={{ marginBottom: '20px' }}>
         Sthapana Estates isn't just a real estate advisory — it's an experience deeply rooted in
@@ -636,12 +645,12 @@ const MobileBottomBar = () => {
 };
 
 const ThankYou = ({ setView }) => (
-  <div className="page-section" style={{ minHeight: '60vh', paddingBottom: '60px', display: 'flex', flexDirection: 'column' }}>
+  <div className="page-section thankyou-container">
     <PageHeader title="Thank You!" />
-    <div style={{ padding: '0 20px', maxWidth: '800px', margin: '60px auto', textAlign: 'center', lineHeight: '1.8' }}>
+    <div className="thankyou-content">
       <CheckCircle2 color="#25d366" size={80} style={{ marginBottom: '20px' }} />
-      <h2 style={{ color: '#d32f2f', marginBottom: '20px', fontSize: '2rem' }}>Submitted Successfully</h2>
-      <p style={{ fontSize: '1.1rem', marginBottom: '40px', color: '#555' }}>
+      <h2 className="thankyou-title">Submitted Successfully</h2>
+      <p className="thankyou-text">
         Thank you for your enquiry. Our luxury real estate advisors will review your request and get back to you shortly.
       </p>
       <button className="btn-submit-brown" onClick={() => { setView('home'); window.scrollTo(0, 0); }} style={{ padding: '12px 35px' }}>Return to Home</button>
