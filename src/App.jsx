@@ -257,7 +257,7 @@ const Gallery = () => {
           viewport={{ once: true, amount: 0.2 }}
           variants={fadeInUp}
         >
-          Project Gallery
+          Projects Gallery
         </motion.h2>
         <div className="gallery-grid">
           {images.map((src, idx) => (
