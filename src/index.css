@@ -44,6 +44,34 @@ h6 {
   font-weight: 500;
   color: var(--color-blue);
   line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.page-section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 25px;
+  position: relative;
+  display: inline-block;
+}
+
+.page-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: var(--color-primary);
+  border-radius: 2px;
+}
+
+.page-section h4 {
+  font-size: 1.3rem;
+  color: #555;
+  margin-top: 30px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 a {
@@ -64,8 +92,10 @@ a {
   top: 0;
   left: 0;
   width: 100%;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  transform: translateZ(0); /* Hardware acceleration */
   padding: 15px 5%;
   display: flex;
   justify-content: space-between;
@@ -405,6 +435,7 @@ a {
 .amenity-box {
   background: rgba(253, 250, 246, 0.85); /* Creamy white translucent */
   backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   width: 160px;
   height: 160px;
   border-radius: 8px;
@@ -415,12 +446,13 @@ a {
   transition: var(--transition);
   cursor: pointer;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transform: translateZ(0); /* Hardware acceleration */
 }
 
 .amenity-box:hover {
   background: var(--color-blue); /* Blue on hover */
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(30, 58, 138, 0.25);
+  transform: translateY(-8px) scale(1.02) translateZ(0);
+  box-shadow: 0 10px 20px rgba(30, 58, 138, 0.15);
 }
 
 .amenity-icon {
@@ -649,17 +681,34 @@ select.form-input option[value=""] {
 }
 
 .page-header-bg {
-  background: var(--color-primary);
+  background: linear-gradient(135deg, var(--color-primary) 0%, #8b0000 100%);
   color: white;
-  padding: 40px 20px;
+  padding: 80px 20px;
   text-align: center;
-  margin-top: 70px;
+  margin-top: 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-header-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .page-header-title {
   margin: 0;
-  font-size: 2.5rem;
+  font-size: 3rem;
+  font-weight: 600;
   color: white;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .thankyou-title {
@@ -720,11 +769,31 @@ select.form-input option[value=""] {
 }
 
 .footer-links a {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  position: relative;
+  transition: var(--transition);
+  opacity: 0.8;
 }
 
 .footer-links a:hover {
-  text-decoration: underline;
+  opacity: 1;
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: #fff;
+  transition: width 0.3s ease;
+}
+
+.footer-links a:hover::after {
+  width: 100%;
 }
 
 /* --- Popup --- */

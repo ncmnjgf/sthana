@@ -20,16 +20,7 @@ const staggerContainer = {
 };
 
 const Navbar = ({ setView }) => {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    }
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const handleLinkClick = (e, id) => {
     if (setView) {
@@ -43,9 +34,6 @@ const Navbar = ({ setView }) => {
 
   return (
     <nav className="navbar" style={{ 
-      background: 'rgba(255, 255, 255, 0.95)',
-      backdropFilter: 'blur(10px)',
-      boxShadow: '0 2px 10px rgba(0, 0, 0, 0.05)',
       transition: 'all 0.4s ease',
       borderBottom: '1px solid rgba(255, 255, 255, 0.2)'
     }}>
@@ -175,7 +163,7 @@ const AmenitiesGrid = ({ openPopup }) => {
             display: 'inline-block',
             letterSpacing: '1px'
           }}
-          initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.8 }} variants={fadeInUp}
+          initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeInUp}
         >
           Our Services
         </motion.h2>
@@ -219,7 +207,7 @@ const ExpertiseSection = () => {
           className="section-title"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.8 }}
+          viewport={{ once: true, amount: 0.2 }}
           variants={fadeInUp}
         >
           Our Expertise: What Sets Us Apart
@@ -265,7 +253,7 @@ const Gallery = () => {
           className="section-title"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.8 }}
+          viewport={{ once: true, amount: 0.2 }}
           variants={fadeInUp}
         >
           Project Gallery
@@ -280,7 +268,7 @@ const Gallery = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.15 }}
             >
-              <img src={src} alt="Gallery image" className="gallery-img" />
+              <img src={src} alt="Gallery image" className="gallery-img" loading="lazy" />
             </motion.div>
           ))}
         </div>
@@ -294,7 +282,7 @@ const Portfolio = ({ openPopup }) => {
     { name: "Gulshan Dynasty", desc: "Ultra-luxury residences in Sector 144, Noida", features: ["Resale & Rental Opportunities Available", "Ready premium living experience"], image: "/assets/noida_driver_way.jpg" },
     { name: "Gulshan Empire", desc: "Premium living at Wave City, Ghaziabad", features: ["Exclusive lifestyle", "Strategic investment opportunity"], image: "/assets/im2.jpg" },
     { name: "Max Estate 105", desc: "A new benchmark in luxury living", features: ["Modern design & curated lifestyle", "Premium connectivity & location advantage"], image: "/assets/maxImage.jpg" },
-    { name: "ACE Terra", desc: "Upcoming premium development on Yamuna Expressway", features: ["High growth corridor", "Ideal for future-ready investments"], image: "/assets/AceTerace.jpg" },
+    { name: "Acs Estate Plots Yamuna ExpressWay", desc: "Upcoming premium development on Yamuna Expressway", features: ["High growth corridor", "Ideal for future-ready investments"], image: "/assets/AceTerace.jpg" },
     { name: "Eldeco EOE", desc: "Luxury living with trusted legacy", features: ["Premium specifications", "Strategic location near upcoming infrastructure"], image: "/assets/Eldeco EOE.jpg" }
   ];
 
@@ -305,7 +293,7 @@ const Portfolio = ({ openPopup }) => {
           className="section-title"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.8 }}
+          viewport={{ once: true, amount: 0.2 }}
           variants={fadeInUp}
         >
           Featured Luxury Opportunities
@@ -320,7 +308,7 @@ const Portfolio = ({ openPopup }) => {
           {projects.map((proj, idx) => (
             <motion.div key={idx} variants={fadeInUp} className="portfolio-card" style={{ display: 'flex', flexDirection: 'column', padding: 0, overflow: 'hidden' }} onClick={() => openPopup(proj.name)}>
               <div style={{ height: '220px', width: '100%', overflow: 'hidden' }}>
-                <img src={proj.image} alt={proj.name} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.4s ease' }} onMouseOver={e => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'} />
+                <img src={proj.image} alt={proj.name} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.4s ease' }} onMouseOver={e => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'} />
               </div>
               <div style={{ padding: '30px 20px', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
                 <h3 className="portfolio-title" style={{ marginBottom: '10px' }}>{proj.name}</h3>
@@ -367,7 +355,7 @@ const LocationAdvantage = () => {
           className="section-title"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.8 }}
+          viewport={{ once: true, amount: 0.2 }}
           variants={fadeInUp}
         >
           Location Advantage
@@ -473,7 +461,7 @@ const Consultation = ({ handleEmailSubmit }) => {
             <option value="Gulshan Dynasty">Gulshan Dynasty</option>
             <option value="Gulshan Empire">Gulshan Empire</option>
             <option value="Max Estate 105">Max Estate 105</option>
-            <option value="ACE Terra">ACE Terra</option>
+            <option value="Acs Estate Plots Yamuna ExpressWay">Acs Estate Plots Yamuna ExpressWay</option>
             <option value="Eldeco EOE">Eldeco EOE</option>
           </select>
           <textarea name="message" className="form-input form-textarea" placeholder="Message*" required></textarea>
@@ -522,7 +510,7 @@ const WelcomePopup = ({ isOpen, setIsOpen, handleEmailSubmit, defaultProject }) 
                 <option value="Gulshan Dynasty">Gulshan Dynasty</option>
                 <option value="Gulshan Empire">Gulshan Empire</option>
                 <option value="Max Estate 105">Max Estate 105</option>
-                <option value="ACE Terra">ACE Terra</option>
+                <option value="Acs Estate Plots Yamuna ExpressWay">Acs Estate Plots Yamuna ExpressWay</option>
                 <option value="Eldeco EOE">Eldeco EOE</option>
               </select>
               <button type="submit" className="btn-form-submit">Submit</button>
