@@ -282,7 +282,7 @@ const Portfolio = ({ openPopup }) => {
     { name: "Gulshan Dynasty", desc: "Ultra-luxury residences in Sector 144, Noida", features: ["Resale & Rental Opportunities Available", "Ready premium living experience"], image: "/assets/noida_driver_way.jpg" },
     { name: "Gulshan Empire", desc: "Premium living at Wave City, Ghaziabad", features: ["Exclusive lifestyle", "Strategic investment opportunity"], image: "/assets/im2.jpg" },
     { name: "Max Estate 105", desc: "A new benchmark in luxury living", features: ["Modern design & curated lifestyle", "Premium connectivity & location advantage"], image: "/assets/maxImage.jpg" },
-    { name: "Acs Estate Plots Yamuna ExpressWay", desc: "Upcoming premium development on Yamuna Expressway", features: ["High growth corridor", "Ideal for future-ready investments"], image: "/assets/AceTerace.jpg" },
+    { name: "Ace Estate Plots Yamuna ExpressWay", desc: "Upcoming premium development on Yamuna Expressway", features: ["High growth corridor", "Ideal for future-ready investments"], image: "/assets/AceTerace.jpg" },
     { name: "Eldeco EOE", desc: "Luxury living with trusted legacy", features: ["Premium specifications", "Strategic location near upcoming infrastructure"], image: "/assets/Eldeco EOE.jpg" }
   ];
 
