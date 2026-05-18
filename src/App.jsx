@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle2, Smartphone, Users, Utensils, Leaf, Sparkles, Waves, Dumbbell, Briefcase, Key, TrendingUp, BarChart, ClipboardCheck, Menu, X } from 'lucide-react';
+import { CheckCircle2, Smartphone, Briefcase, Key, TrendingUp, BarChart, ClipboardCheck, Menu, X } from 'lucide-react';
 import './index.css';
 
 // Animation Variables
@@ -33,13 +34,13 @@ const Navbar = ({ setView }) => {
   };
 
   return (
-    <nav className="navbar" style={{ 
+    <nav className="navbar" style={{
       transition: 'all 0.4s ease',
       borderBottom: '1px solid rgba(255, 255, 255, 0.2)'
     }}>
-      <div className="nav-brand" onClick={() => { if(setView) { setView('home'); window.scrollTo(0,0); } setMobileMenuOpen(false); }}>
+      <div className="nav-brand" onClick={() => { if (setView) { setView('home'); window.scrollTo(0, 0); } setMobileMenuOpen(false); }}>
         <div className="nav-logo-container">
-          <img src="/logos.png" alt="Sthapana Estates" className="nav-logo" />
+          <img src="/logos.png" alt="Sthapana Estates" className="nav-logo" decoding="async" fetchpriority="high" />
         </div>
       </div>
 
@@ -53,7 +54,7 @@ const Navbar = ({ setView }) => {
         <a href="#gallery" onClick={(e) => { handleLinkClick(e, 'gallery'); setMobileMenuOpen(false); }}>Gallery</a>
         <a href="#floor-plan" onClick={(e) => { handleLinkClick(e, 'floor-plan'); setMobileMenuOpen(false); }}>Floor Plan</a>
         <a href="#location" onClick={(e) => { handleLinkClick(e, 'location'); setMobileMenuOpen(false); }}>Location Advantage</a>
-        <a href="#privacy" onClick={(e) => { e.preventDefault(); if(setView) { setView('privacy'); window.scrollTo(0,0); } setMobileMenuOpen(false); }}>Privacy Policy</a>
+        <a href="#privacy" onClick={(e) => { e.preventDefault(); if (setView) { setView('privacy'); window.scrollTo(0, 0); } setMobileMenuOpen(false); }}>Privacy Policy</a>
         <a href="#contact" onClick={(e) => { handleLinkClick(e, 'contact'); setMobileMenuOpen(false); }}>Contact Us</a>
         <a href="tel:+91-9654212000" className="btn-nav-phone mobile-only-nav-action" style={{ textDecoration: 'none', background: '#d32f2f', borderRadius: '4px', padding: '10px 24px', color: 'white', fontWeight: 500, transition: 'all 0.3s', display: 'none' }}>+91-9654212000</a>
       </div>
@@ -104,8 +105,8 @@ const OverviewSection = () => {
   return (
     <section className="section" style={{ background: '#fff', padding: '60px 0' }}>
       <div className="container" style={{ textAlign: 'center', maxWidth: '900px' }}>
-        <motion.h2 
-          className="section-title" 
+        <motion.h2
+          className="section-title"
           style={{ fontSize: '2rem', color: '#1e3a8a', marginBottom: '30px', fontWeight: 500 }}
           initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeInUp}
         >
@@ -148,14 +149,14 @@ const AmenitiesGrid = ({ openPopup }) => {
     <section id="amenities" className="amenities-grid-section">
       <div className="hero-bg" style={{ backgroundImage: "url('/assets/img1.jpg')", zIndex: -2 }}></div>
       <div className="hero-overlay" style={{ background: 'rgba(0,0,0,0.6)', zIndex: -1 }}></div>
-      
+
       <div className="container" style={{ position: 'relative', zIndex: 1, padding: '80px 0 120px', textAlign: 'center' }}>
-        <motion.h2 
-          className="section-title" 
-          style={{ 
-            color: 'white', 
-            marginBottom: '50px', 
-            fontSize: '2.5rem', 
+        <motion.h2
+          className="section-title"
+          style={{
+            color: 'white',
+            marginBottom: '50px',
+            fontSize: '2.5rem',
             fontWeight: 500,
             background: 'rgba(0, 0, 0, 0.4)',
             padding: '15px 40px',
@@ -167,8 +168,8 @@ const AmenitiesGrid = ({ openPopup }) => {
         >
           Our Services
         </motion.h2>
-        
-        <motion.div 
+
+        <motion.div
           className="amenities-boxes"
           initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={staggerContainer}
         >
@@ -213,11 +214,11 @@ const ExpertiseSection = () => {
           Our Expertise: What Sets Us Apart
         </motion.h2>
         <motion.div
-           initial="hidden"
-           whileInView="visible"
-           viewport={{ once: true, amount: 0.3 }}
-           variants={staggerContainer}
-           style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'left' }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={staggerContainer}
+          style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'left' }}
         >
           <ul style={{ listStyle: 'none', padding: 0 }}>
             {[
@@ -227,10 +228,10 @@ const ExpertiseSection = () => {
               "Personalized consultation based on lifestyle & preferences",
               "Strong track record in luxury resale & rental advisory"
             ].map((text, idx) => (
-               <motion.li key={idx} variants={fadeInUp} style={{ display: 'flex', alignItems: 'flex-start', gap: '15px', fontSize: '1.1rem', color: '#333', marginBottom: '20px' }}>
-                 <CheckCircle2 color="#d32f2f" size={24} style={{ flexShrink: 0, marginTop: '2px' }} />
-                 <span>{text}</span>
-               </motion.li>
+              <motion.li key={idx} variants={fadeInUp} style={{ display: 'flex', alignItems: 'flex-start', gap: '15px', fontSize: '1.1rem', color: '#333', marginBottom: '20px' }}>
+                <CheckCircle2 color="#d32f2f" size={24} style={{ flexShrink: 0, marginTop: '2px' }} />
+                <span>{text}</span>
+              </motion.li>
             ))}
           </ul>
         </motion.div>
@@ -268,7 +269,7 @@ const Gallery = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.15 }}
             >
-              <img src={src} alt="Gallery image" className="gallery-img" loading="lazy" />
+              <img src={src} alt="Gallery image" className="gallery-img" loading="lazy" decoding="async" />
             </motion.div>
           ))}
         </div>
@@ -308,7 +309,7 @@ const Portfolio = ({ openPopup }) => {
           {projects.map((proj, idx) => (
             <motion.div key={idx} variants={fadeInUp} className="portfolio-card" style={{ display: 'flex', flexDirection: 'column', padding: 0, overflow: 'hidden' }} onClick={() => openPopup(proj.name)}>
               <div style={{ height: '220px', width: '100%', overflow: 'hidden' }}>
-                <img src={proj.image} alt={proj.name} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.4s ease' }} onMouseOver={e => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'} />
+                <img src={proj.image} alt={proj.name} loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.4s ease' }} onMouseOver={e => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'} />
               </div>
               <div style={{ padding: '30px 20px', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
                 <h3 className="portfolio-title" style={{ marginBottom: '10px' }}>{proj.name}</h3>
@@ -325,13 +326,27 @@ const Portfolio = ({ openPopup }) => {
           ))}
         </motion.div>
         <motion.button
-          className="btn-submit-brown"
-          style={{ padding: '12px 40px', fontSize: '1.05rem', margin: '0 auto', display: 'block' }}
+          className="btn-enquire-featured"
+          style={{
+            background: '#ffffff',
+            color: '#d32f2f',
+            padding: '14px 45px',
+            border: 'none',
+            borderRadius: '4px',
+            fontSize: '1.1rem',
+            cursor: 'pointer',
+            fontWeight: '600',
+            margin: '40px auto 0',
+            display: 'block',
+            boxShadow: '0 4px 15px rgba(0,0,0,0.1)'
+          }}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeInUp}
-          onClick={openPopup}
+          onClick={() => openPopup()}
+          whileHover={{ scale: 1.05, boxShadow: '0 6px 20px rgba(0,0,0,0.15)' }}
+          whileTap={{ scale: 0.95 }}
         >
           Enquire Now
         </motion.button>
@@ -358,7 +373,7 @@ const LocationAdvantage = () => {
           viewport={{ once: true, amount: 0.2 }}
           variants={fadeInUp}
         >
-          Location Advantage
+          Our Location
         </motion.h2>
         <div className="location-grid">
           <motion.div
@@ -412,7 +427,7 @@ const WhyUsSection = () => {
   return (
     <section className="section" style={{ background: '#fdfaf6', padding: '60px 0' }}>
       <div className="container" style={{ textAlign: 'center', maxWidth: '800px' }}>
-        <motion.h2 
+        <motion.h2
           className="section-title"
           initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}
         >
@@ -420,11 +435,11 @@ const WhyUsSection = () => {
         </motion.h2>
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
           <h4 style={{ fontSize: '1.4rem', color: '#1e3a8a', margin: '20px 0', fontWeight: 500, lineHeight: '1.6' }}>
-            Because we believe luxury is deeply personal—<br/>
+            Because we believe luxury is deeply personal—<br />
             and every home must be a reflection of who you are.
           </h4>
           <h3 style={{ fontSize: '1.8rem', color: '#1e3a8a', margin: '30px 0', fontWeight: 600, fontStyle: 'italic' }}>
-            We don’t just present options.<br/>
+            We don’t just present options.<br />
             We curate possibilities.
           </h3>
         </motion.div>
@@ -485,7 +500,7 @@ const WelcomePopup = ({ isOpen, setIsOpen, handleEmailSubmit, defaultProject }) 
     return () => clearTimeout(timer);
   }, [setIsOpen]);
 
-  return (
+  return ReactDOM.createPortal(
     <AnimatePresence>
       {isOpen && (
         <div className="popup-overlay">
@@ -518,7 +533,8 @@ const WelcomePopup = ({ isOpen, setIsOpen, handleEmailSubmit, defaultProject }) 
           </motion.div>
         </div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 };
 
@@ -677,7 +693,7 @@ function App() {
     formData.append("Mobile", mobile);
     if (project) formData.append("Interested In", project);
     if (message) formData.append("Message", message);
-    
+
     formData.append("subject", "New Enquiry from Sthapana Estates Website");
     formData.append("from_name", "Sthapana Estates");
 
@@ -689,7 +705,7 @@ function App() {
         body: formData
       });
       const data = await response.json();
-      
+
       if (data.success) {
         form.reset();
         setView('thank-you');

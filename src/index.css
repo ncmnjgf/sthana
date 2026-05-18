@@ -1,12 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --color-primary: #d32f2f;
-  /* Theme Red */
-  --color-primary-hover: #b71c1c;
-  /* Darker Theme Red */
+  --color-primary: #d32f2f; /* Theme Red */
+  --color-primary-hover: #b71c1c; /* Darker Theme Red */
   --color-text-dark: #111111;
-  --color-text-light: #111111;
   --color-bg-light: #ffffff;
   --color-white: #ffffff;
   --font-main: 'Jost', sans-serif;
@@ -190,6 +187,8 @@ a {
   display: flex;
   align-items: center;
   padding-top: 80px;
+  content-visibility: auto;
+  contain-intrinsic-size: 100vh;
 }
 
 .hero-bg {
@@ -407,6 +406,8 @@ a {
   padding: 80px 0;
   background: var(--color-bg-light);
   text-align: center;
+  content-visibility: auto;
+  contain-intrinsic-size: 500px;
 }
 
 .section-title {
@@ -504,8 +505,9 @@ a {
   border-radius: 8px;
   padding: 60px 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  transition: var(--transition);
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
   cursor: pointer;
+  will-change: transform;
 }
 
 .portfolio-card:hover {
@@ -561,7 +563,7 @@ select.form-input option[value=""] {
 
 /* --- Gallery --- */
 .gallery-section {
-  padding: 80px 0;
+  padding: 20px 0 80px 0;
   background: white;
 }
 
@@ -591,6 +593,7 @@ select.form-input option[value=""] {
 .gallery-item {
   overflow: hidden;
   border-radius: 8px;
+  will-change: transform;
 }
 
 .gallery-item:hover .gallery-img {
@@ -615,7 +618,7 @@ select.form-input option[value=""] {
 
 /* --- Location Advantage --- */
 .location-section {
-  padding: 80px 0;
+  padding: 80px 0 20px 0;
   background: white;
 }
 
